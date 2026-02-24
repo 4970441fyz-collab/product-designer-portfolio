@@ -140,3 +140,29 @@
   width:180px;
   }
   }
+  .case-section {
+    margin-top: 40px;
+  }
+  
+  .divider {
+    margin: 60px 0;
+    border: none;
+    height: 1px;
+    background-color: #e5e7eb;
+  }
+  
+  .case-block h3 {
+    margin-top: 32px;
+    margin-bottom: 16px;
+  }
+  
+  .case-block h4 {
+    margin-top: 20px;
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+  
+  .case-block p {
+    margin-bottom: 20px;
+    line-height: 1.6;
+  }
