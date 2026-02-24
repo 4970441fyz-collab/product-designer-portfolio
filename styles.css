@@ -60,7 +60,7 @@
   .hero-photo img {
   width:240px;
   border-radius:12px;
-  background:#e5e7eb;
+  background:#f6f7f8;
   }
   
   .section {
@@ -104,7 +104,7 @@
   padding:30px;
   background:white;
   border:1px solid #e5e7eb;
-  border-radius:12px;
+  border-radius:24px;
   }
   
   .case-images {
@@ -119,7 +119,7 @@
     width: 100%;
     max-width: 260px;
     height: auto;
-    border-radius: 16px;
+    border-radius: 24px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
   }
 
@@ -195,4 +195,8 @@
 
 .case-images {
   align-items: start;
+}
+
+.case-section h3 {
+  color: #4F46E5; /* сюда любой цвет */
 }
