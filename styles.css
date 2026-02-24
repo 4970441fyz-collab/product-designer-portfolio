@@ -198,5 +198,15 @@
 }
 
 .case-section h3 {
-  color: #4F46E5; /* сюда любой цвет */
+  color: #555ee9; /* сюда любой цвет */
+}
+
+.case-images.single {
+  grid-template-columns: 1fr;
+  justify-items: center;
+}
+
+.case-images.single img {
+  max-width: 900px; /* ← увеличиваем размер */
+  width: 100%;
 }
