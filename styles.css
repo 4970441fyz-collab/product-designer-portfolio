@@ -1,0 +1,142 @@
+* {
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  }
+  
+  body {
+  font-family:'Inter', sans-serif;
+  background:#f7f8fa;
+  color:#111;
+  line-height:1.5;
+  }
+  
+  .container {
+  max-width:1100px;
+  margin:0 auto;
+  padding:40px 20px;
+  }
+  
+  .nav {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  }
+  
+  .logo {
+  font-weight:600;
+  text-decoration:none;
+  color:#111;
+  }
+  
+  .nav-links a {
+  margin-left:24px;
+  text-decoration:none;
+  color:#555;
+  }
+  
+  .hero {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:60px;
+  padding-top:60px;
+  }
+  
+  .hero-text {
+  max-width:600px;
+  }
+  
+  .hero h1 {
+  font-size:48px;
+  margin-bottom:20px;
+  }
+  
+  .lead {
+  font-size:18px;
+  margin-bottom:20px;
+  }
+  
+  .hero-photo img {
+  width:240px;
+  border-radius:12px;
+  background:#e5e7eb;
+  }
+  
+  .section {
+  margin-top:80px;
+  }
+  
+  .project-card {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:30px;
+  margin-top:20px;
+  border:1px solid #e5e7eb;
+  border-radius:12px;
+  text-decoration:none;
+  color:#111;
+  background:white;
+  transition:0.2s ease;
+  }
+  
+  .project-card:hover {
+  box-shadow:0 6px 20px rgba(0,0,0,0.06);
+  transform:translateY(-2px);
+  }
+  
+  .arrow {
+  font-size:24px;
+  color:#999;
+  }
+  
+  .experience-item {
+  margin-top:20px;
+  }
+  
+  .case {
+  max-width:800px;
+  }
+  
+  .case-block {
+  margin-top:40px;
+  padding:30px;
+  background:white;
+  border:1px solid #e5e7eb;
+  border-radius:12px;
+  }
+  
+  .case-img {
+  width:100%;
+  margin-top:20px;
+  border-radius:12px;
+  border:1px solid #e5e7eb;
+  }
+  
+  .back-btn {
+  display:inline-block;
+  margin-top:40px;
+  padding:12px 20px;
+  border:1px solid #111;
+  text-decoration:none;
+  color:#111;
+  }
+  
+  .footer {
+  margin-top:100px;
+  padding-bottom:40px;
+  color:#777;
+  font-size:14px;
+  }
+  
+  @media (max-width:900px) {
+  .hero {
+  flex-direction:column;
+  align-items:flex-start;
+  }
+  
+  .hero-photo img {
+  width:180px;
+  }
+  }
