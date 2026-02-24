@@ -110,14 +110,17 @@
   .case-images {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-    margin: 24px 0;
+    gap: 32px;
+    margin: 32px 0;
+    justify-items: center;
   }
+  
   .case-images img {
     width: 100%;
+    max-width: 260px;
     height: auto;
-    display: block;
-    border-radius: 12px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
   }
 
   .back-btn {
@@ -172,3 +175,24 @@
     margin-bottom: 20px;
     line-height: 1.6;
   }
+  /* Tablet */
+@media (max-width: 1024px) {
+  .case-images {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  .case-images {
+    grid-template-columns: 1fr;
+  }
+
+  .case-images img {
+    max-width: 320px;
+  }
+}
+
+.case-images {
+  align-items: start;
+}
