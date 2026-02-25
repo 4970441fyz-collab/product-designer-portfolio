@@ -210,3 +210,97 @@
   max-width: 900px; /* ← увеличиваем размер */
   width: 100%;
 }
+
+/* ===== CASE PAGE ===== */
+
+.case {
+  padding: 120px 20px;
+}
+
+.case-container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.case-header {
+  margin-bottom: 100px;
+}
+
+.case-title {
+  font-size: 48px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.case-subtitle {
+  font-size: 20px;
+  opacity: 0.7;
+}
+
+.case-block {
+  margin-bottom: 100px;
+}
+
+.case-heading {
+  font-size: 28px;
+  margin-bottom: 24px;
+}
+
+.case-text {
+  font-size: 18px;
+  line-height: 1.7;
+  max-width: 720px;
+}
+
+.role-grid {
+  margin-top: 32px;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  gap: 12px 40px;
+  max-width: 700px;
+}
+
+.role-grid span {
+  font-size: 17px;
+  opacity: 0.85;
+}
+
+.case-note {
+  margin-top: 32px;
+  font-size: 16px;
+  opacity: 0.6;
+}
+
+.case-button {
+  display: inline-block;
+  padding: 16px 32px;
+  background-color: #111;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 12px;
+  font-size: 16px;
+  transition: 0.3s ease;
+}
+
+.case-button:hover {
+  opacity: 0.8;
+}
+
+
+/* ===== Responsive ===== */
+
+@media (max-width: 768px) {
+
+  .case-title {
+    font-size: 36px;
+  }
+
+  .role-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .case-block {
+    margin-bottom: 70px;
+  }
+
+}
