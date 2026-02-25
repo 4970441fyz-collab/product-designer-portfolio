@@ -210,3 +210,32 @@ body {
   }
 
 }
+
+/* =========================
+   CASE SECTION CARDS
+========================= */
+
+.case-block {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 24px;
+  padding: 48px 48px;
+  margin-bottom: 60px;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.04);
+}
+
+/* Чтобы текст внутри не прилипал к краям */
+.case-block p,
+.case-block ul,
+.case-block h2,
+.case-block h3 {
+  max-width: 720px;
+}
+
+/* Мобильная адаптация */
+@media (max-width: 768px) {
+  .case-block {
+    padding: 28px 24px;
+    border-radius: 18px;
+  }
+}
