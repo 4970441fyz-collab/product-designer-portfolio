@@ -141,7 +141,7 @@ body {
 }
 
 .case p {
-  max-width: 680px;
+  max-width: 720px;
   font-size: clamp(15px, 1.1vw, 17px);
   line-height: 1.55;   /* уменьшили интерлиньяж */
   color: #1a1a1a;      /* контрастный текст */
