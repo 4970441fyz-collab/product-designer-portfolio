@@ -140,13 +140,6 @@ body {
   margin-bottom: 12px;
 }
 
-.case p {
-  max-width: 720px;
-  font-size: clamp(15px, 1.1vw, 17px);
-  line-height: 1.55;   /* уменьшили интерлиньяж */
-  color: #1a1a1a;      /* контрастный текст */
-  margin-bottom: 18px;
-}
 
 .case ul {
   max-width: 680px;
@@ -224,13 +217,6 @@ body {
   box-shadow: 0 6px 24px rgba(0,0,0,0.04);
 }
 
-/* Чтобы текст внутри не прилипал к краям */
-.case-block p,
-.case-block ul,
-.case-block h2,
-.case-block h3 {
-  max-width: 720px;
-}
 
 /* Мобильная адаптация */
 @media (max-width: 768px) {
@@ -238,4 +224,13 @@ body {
     padding: 28px 24px;
     border-radius: 18px;
   }
+}
+
+/* Text full width inside cards */
+
+.case-block p,
+.case-block ul,
+.case-block h2,
+.case-block h3 {
+  max-width: 100%;
 }
