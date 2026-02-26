@@ -1,58 +1,108 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Orbital Data Monitoring Platform</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<header class="container nav">
-  <a href="index.html" class="logo">← Назад</a>
-</header>
-
-<main class="container case">
-
-<h1>Orbital Data Monitoring Platform</h1>
-
-<section class="case-block">
-<h2>Контекст</h2>
-<p>
-Концепт аналитической платформы для мониторинга орбитальных объектов.
-Интерфейс предназначен для специалистов, работающих с большими массивами данных
-и принимающих решения в режиме реального времени.
-</p>
+<!-- HERO -->
+<section class="section hero">
+  <div class="container">
+    <h1>Orbital Data Monitoring Platform</h1>
+    <p>
+      Real-time mission control system for tracking satellites, orbital stations,
+      and space infrastructure. Designed for aerospace analytics teams.
+    </p>
+  </div>
 </section>
 
-<section class="case-block">
-<h2>Моя роль</h2>
-<ul>
-<li>Проектирование архитектуры интерфейса</li>
-<li>UX-логика аналитических панелей</li>
-<li>Разработка визуальной иерархии данных</li>
-<li>Создание high-fidelity прототипов</li>
-</ul>
+<!-- MAIN DASHBOARD -->
+<section class="section">
+  <div class="container">
+    <h2>Main Dashboard</h2>
+
+    <div class="kpi-row">
+      <div class="kpi">
+        Total Objects
+        <h3>128</h3>
+      </div>
+      <div class="kpi">
+        Active Missions
+        <h3>42</h3>
+      </div>
+      <div class="kpi">
+        Signal Integrity
+        <h3>98.4%</h3>
+      </div>
+      <div class="kpi">
+        Critical Alerts
+        <h3>3</h3>
+      </div>
+    </div>
+
+    <div class="dashboard">
+      <div class="sidebar">
+        <div class="object-item">SAT-A102 — Active</div>
+        <div class="object-item">SAT-B347 — Standby</div>
+        <div class="object-item">ISS Relay — Active</div>
+        <div class="object-item">Orbital Node X — Alert</div>
+      </div>
+
+      <div class="map-area">
+        3D Orbital Map / Earth Visualization
+      </div>
+    </div>
+  </div>
 </section>
 
-<section class="case-block">
-<h2>Процесс</h2>
-<img src="assets/orbital-1.jpg" class="case-img">
-<img src="assets/orbital-2.jpg" class="case-img">
+<!-- OBJECT DETAIL -->
+<section class="section">
+  <div class="container">
+    <h2>Object Detail</h2>
+
+    <div class="detail-grid">
+      <div class="detail-card">
+        <h3>SAT-A102</h3>
+        <p>Status: <span class="status-active">Active</span></p>
+        <p>Altitude: 420 km</p>
+        <p>Velocity: 27,600 km/h</p>
+        <p>Signal Strength: 97%</p>
+      </div>
+
+      <div class="detail-card">
+        <h3>Operational History</h3>
+        <div class="chart-placeholder">
+          Signal / Telemetry Graph
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section class="case-block">
-<h2>Результат</h2>
-<ul>
-<li>Системный подход к отображению сложных данных</li>
-<li>Повышение читаемости аналитических панелей</li>
-<li>Продуманная логика фильтрации и навигации</li>
-</ul>
+<!-- ANALYTICS -->
+<section class="section">
+  <div class="container">
+    <h2>Analytics</h2>
+
+    <div class="analytics-grid">
+      <div class="trend-card">Signal Stability Trend (30 days)</div>
+      <div class="trend-card">Object Comparison Metrics</div>
+      <div class="trend-card">Mission Duration Analysis</div>
+      <div class="trend-card">Alert Frequency Overview</div>
+    </div>
+  </div>
 </section>
 
-<a href="index.html" class="back-btn">Назад</a>
+<div class="footer">
+  Orbital Data Monitoring Platform — Concept Case Study
+</div>
 
-</main>
 </body>
 </html>
