@@ -1,295 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Orbital Data Monitoring Platform</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
-
-<style>
-
-/* ========== ISOLATED THEME ========== */
-
-.orbital-case {
-  font-family: 'Inter', sans-serif;
-  background: #05070D;
-  color: #E6EDF7;
-  position: relative;
-  overflow-x: hidden;
-}
-
-/* Stars */
-
-.orbital-case::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background:
-    radial-gradient(2px 2px at 20% 30%, white, transparent),
-    radial-gradient(1px 1px at 70% 60%, white, transparent),
-    radial-gradient(1px 1px at 40% 80%, white, transparent),
-    radial-gradient(2px 2px at 85% 20%, white, transparent);
-  background-size: 800px 800px;
-  animation: starsMove 120s linear infinite;
-  opacity: 0.3;
-  z-index: 0;
-}
-
-@keyframes starsMove {
-  from { transform: translateY(0); }
-  to { transform: translateY(-1000px); }
-}
-
-.milky {
-  position: fixed;
-  inset: 0;
-  background: radial-gradient(ellipse at 60% 40%, rgba(90,120,255,0.2), transparent 60%);
-  z-index: 0;
-}
-
-/* Layout */
-
-.container {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 120px 8%;
-  position: relative;
-  z-index: 2;
-}
-
-h1 { font-size: 60px; margin-bottom: 20px; }
-h2 { font-size: 42px; margin-bottom: 60px; }
-p { color: #9FAAC9; max-width: 720px; line-height: 1.7; }
-
-/* Globe */
-
-#globe {
-  width: 100%;
-  height: 600px;
-  border-radius: 24px;
-  border: 1px solid rgba(255,255,255,0.05);
-}
-
-/* KPI */
-
-.kpi-grid {
-  display: grid;
-  grid-template-columns: repeat(4,1fr);
-  gap: 24px;
-  margin-bottom: 60px;
-}
-
-.kpi {
-  background: rgba(255,255,255,0.03);
-  backdrop-filter: blur(10px);
-  padding: 28px;
-  border-radius: 18px;
-  border: 1px solid rgba(255,255,255,0.05);
-}
-
-.kpi h3 { font-size: 34px; margin-top: 10px; }
-
-/* Dashboard */
-
-.dashboard {
-  display: grid;
-  grid-template-columns: 260px 1fr;
-  gap: 40px;
-}
-
-.sidebar {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-
-.object {
-  padding: 16px;
-  border-radius: 14px;
-  background: rgba(255,255,255,0.03);
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.object:hover { background: rgba(255,255,255,0.07); }
-
-.detail-card {
-  background: rgba(255,255,255,0.03);
-  padding: 40px;
-  border-radius: 24px;
-  border: 1px solid rgba(255,255,255,0.05);
-}
-
-canvas { margin-top: 20px; }
-
-/* Analytics */
-
-.analytics-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
-}
-
-.card {
-  background: rgba(255,255,255,0.03);
-  padding: 40px;
-  border-radius: 24px;
-  border: 1px solid rgba(255,255,255,0.05);
-}
-
-/* Process */
-
-.process-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
-}
-
-.footer {
-  text-align: center;
-  padding: 120px 0;
-  color: #5B6A8C;
-}
-
-</style>
+  <meta charset="UTF-8">
+  <title>Orbital — Product Case Study</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../style.css">
 </head>
 
 <body>
-<div class="orbital-case">
-<div class="milky"></div>
 
-<section class="container">
-  <h1>Orbital Data Monitoring Platform</h1>
-  <p>
-    Enterprise-grade monitoring system for real-time satellite telemetry,
-    mission analytics, and orbital infrastructure management.
-  </p>
-</section>
+  <div class="container">
 
-<section class="container">
-  <h2>Main Dashboard</h2>
+    <a href="../index.html" class="back-link">← Back to projects</a>
 
-  <div class="kpi-grid">
-    <div class="kpi">Total Objects <h3>128</h3></div>
-    <div class="kpi">Active Missions <h3>42</h3></div>
-    <div class="kpi">Data Streams <h3>312</h3></div>
-    <div class="kpi">System Health <h3>98.4%</h3></div>
-  </div>
-
-  <div id="globe"></div>
-</section>
-
-<section class="container">
-  <h2>Object Detail</h2>
-
-  <div class="dashboard">
-    <div class="sidebar">
-      <div class="object" onclick="updateObject('SAT-A102',420,97)">SAT-A102</div>
-      <div class="object" onclick="updateObject('SAT-B347',390,89)">SAT-B347</div>
-      <div class="object" onclick="updateObject('ISS Relay',410,95)">ISS Relay</div>
-    </div>
-
-    <div class="detail-card">
-      <h3 id="objName">SAT-A102</h3>
-      <p id="objData">Altitude: 420 km | Signal: 97%</p>
-      <canvas id="chart" width="500" height="200"></canvas>
-    </div>
-  </div>
-</section>
-
-<section class="container">
-  <h2>Analytics</h2>
-  <div class="analytics-grid">
-    <div class="card">Signal Stability Trend</div>
-    <div class="card">Mission Duration Analysis</div>
-    <div class="card">Object Comparison Metrics</div>
-    <div class="card">Alert Frequency Overview</div>
-  </div>
-</section>
-
-<section class="container">
-  <h2>Process & UX Decisions</h2>
-  <div class="process-grid">
-    <div>
-      <h3>Research</h3>
-      <p>
-        Conducted competitive analysis of aerospace dashboards,
-        identifying cognitive overload issues in existing mission-control systems.
+    <section class="project-hero">
+      <h1>Orbital</h1>
+      <p class="project-subtitle">
+        Satellite data monitoring dashboard for aerospace analytics
       </p>
-    </div>
-    <div>
-      <h3>UX Strategy</h3>
+    </section>
+
+    <section class="project-section">
+      <h2>Overview</h2>
       <p>
-        Implemented progressive data disclosure, priority-based alert hierarchy,
-        and spatial visualization using a 3D globe to reduce operator fatigue.
+        Orbital is a data monitoring platform designed for tracking satellite telemetry,
+        mission status, and environmental data in real time. The goal was to design
+        a clean and scalable dashboard system for aerospace operators.
       </p>
-    </div>
+    </section>
+
+    <section class="project-section">
+      <h2>Problem</h2>
+      <p>
+        Aerospace teams work with complex telemetry systems and fragmented monitoring tools.
+        The existing workflow required switching between multiple systems,
+        slowing down mission analysis and increasing cognitive load.
+      </p>
+    </section>
+
+    <section class="project-section">
+      <h2>Solution</h2>
+      <p>
+        I designed a unified dashboard that centralizes satellite tracking,
+        system health monitoring, and mission analytics into one structured interface.
+      </p>
+    </section>
+
+    <section class="project-section">
+      <h2>Design System</h2>
+      <ul>
+        <li>Modular card-based layout</li>
+        <li>Minimal typography hierarchy</li>
+        <li>High-contrast data visualization</li>
+        <li>Scalable grid system</li>
+      </ul>
+    </section>
+
+    <section class="project-section">
+      <h2>Dashboard Preview</h2>
+
+      <div class="dashboard-preview">
+        <div class="dashboard-card">
+          <h3>Satellite Status</h3>
+          <p>Active: 12</p>
+          <p>Standby: 3</p>
+        </div>
+
+        <div class="dashboard-card">
+          <h3>Telemetry</h3>
+          <p>Signal Strength: Stable</p>
+          <p>Temperature: Nominal</p>
+        </div>
+
+        <div class="dashboard-card">
+          <h3>Mission Analytics</h3>
+          <p>Orbit Deviation: 0.02%</p>
+          <p>Fuel Usage: 78%</p>
+        </div>
+      </div>
+
+    </section>
+
   </div>
-</section>
-
-<div class="footer">
-Orbital Data Monitoring Platform — Advanced Product Case
-</div>
-
-</div>
-
-<script>
-
-/* ========== THREE JS GLOBE ========== */
-
-const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
-const renderer = new THREE.WebGLRenderer({antialias:true});
-renderer.setSize(document.getElementById("globe").clientWidth, 600);
-document.getElementById("globe").appendChild(renderer.domElement);
-
-const geometry = new THREE.SphereGeometry(2, 64, 64);
-const texture = new THREE.TextureLoader().load('https://threejs.org/examples/textures/earth_atmos_2048.jpg');
-const material = new THREE.MeshStandardMaterial({ map: texture });
-const globe = new THREE.Mesh(geometry, material);
-scene.add(globe);
-
-const light = new THREE.PointLight(0xffffff,1);
-light.position.set(5,3,5);
-scene.add(light);
-
-camera.position.z = 5;
-
-function animate() {
-  requestAnimationFrame(animate);
-  globe.rotation.y += 0.002;
-  renderer.render(scene,camera);
-}
-animate();
-
-/* ========== INTERACTIVE DATA ========== */
-
-function updateObject(name, altitude, signal){
-  document.getElementById("objName").innerText = name;
-  document.getElementById("objData").innerText =
-    "Altitude: " + altitude + " km | Signal: " + signal + "%";
-  drawChart(signal);
-}
-
-/* Simple Chart */
-
-function drawChart(signal){
-  const canvas = document.getElementById("chart");
-  const ctx = canvas.getContext("2d");
-  ctx.clearRect(0,0,500,200);
-  ctx.beginPath();
-  ctx.moveTo(0,200-signal*1.5);
-  for(let i=1;i<=10;i++){
-    ctx.lineTo(i*50,200-(signal-5+Math.random()*10)*1.5);
-  }
-  ctx.strokeStyle = "#4F7CFF";
-  ctx.stroke();
-}
-
-drawChart(97);
-
-</script>
 
 </body>
 </html>
