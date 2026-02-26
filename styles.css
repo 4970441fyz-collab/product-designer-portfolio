@@ -234,3 +234,10 @@ body {
 .case-block h3 {
   max-width: 100%;
 }
+
+.case-row-visual img {
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  display: block;
+}
