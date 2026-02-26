@@ -241,3 +241,14 @@ body {
   border-radius: 16px;
   display: block;
 }
+
+.case-hero-image {
+  margin: 48px 0 72px;
+}
+
+.case-hero-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  display: block;
+}
