@@ -252,3 +252,158 @@ body {
   border-radius: 16px;
   display: block;
 }
+
+/* =========================
+   CASE DESIGN FRAMEWORK
+   ========================= */
+
+/* Общий контейнер */
+
+.container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Основной блок кейса */
+
+.case {
+  margin-top: 80px;
+  margin-bottom: 120px;
+}
+
+/* Заголовок проекта */
+
+.case h1 {
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 1.2;
+  margin-bottom: 48px;
+}
+
+/* Карточки секций */
+
+.case-block {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 48px 56px;
+  margin-bottom: 48px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.04);
+}
+
+/* Заголовки внутри */
+
+.case-block h2 {
+  font-size: 26px;
+  font-weight: 600;
+  margin-bottom: 24px;
+}
+
+.case-block h3 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+/* Текст */
+
+.case-block p,
+.case-block li {
+  font-size: 16px;
+  line-height: 1.55;
+  color: #2b2b2b;
+}
+
+/* Списки */
+
+.case-block ul {
+  padding-left: 20px;
+  margin-top: 16px;
+}
+
+.case-block li {
+  margin-bottom: 8px;
+}
+
+/* Сетка текст + изображение */
+
+.case-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+  margin-top: 32px;
+}
+
+/* Реверс */
+
+.case-row.reverse {
+  direction: rtl;
+}
+
+.case-row.reverse > * {
+  direction: ltr;
+}
+
+/* Изображения */
+
+.case-row-visual img,
+.case-hero-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  display: block;
+}
+
+/* Hero image */
+
+.case-hero-image {
+  margin-bottom: 72px;
+}
+
+/* Разделитель */
+
+.divider {
+  margin: 72px 0;
+  border: none;
+  border-top: 1px solid #e8e8e8;
+}
+
+/* Кнопка */
+
+.case-button {
+  display: inline-block;
+  margin-top: 32px;
+  padding: 14px 28px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 500;
+  background: #111111;
+  color: white;
+}
+
+/* Back button */
+
+.back-btn {
+  display: inline-block;
+  margin-top: 80px;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* Адаптив */
+
+@media (max-width: 900px) {
+  .case-row {
+    grid-template-columns: 1fr;
+  }
+
+  .case-block {
+    padding: 32px;
+  }
+
+  .case h1 {
+    font-size: 32px;
+  }
+}
