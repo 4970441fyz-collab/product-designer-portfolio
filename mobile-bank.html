@@ -7,36 +7,23 @@
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
 :root {
-  --bg: #F9F8F6;
-  --surface: #FFFFFF;
-  --ink: #111010;
-  --ink-secondary: #6B6B6B;
-  --ink-tertiary: #A8A8A8;
-  --border: #E8E6E1;
-  --font-display: 'Syne', sans-serif;
-  --font-body: 'DM Sans', sans-serif;
+  --bg: #F9F8F6; --surface: #FFFFFF; --ink: #111010;
+  --ink-secondary: #6B6B6B; --ink-tertiary: #A8A8A8; --border: #E8E6E1;
+  --font-display: 'Syne', sans-serif; --font-body: 'DM Sans', sans-serif;
   --max-w: 1080px;
 }
-
 html { scroll-behavior: smooth; }
 body {
-  font-family: var(--font-body);
-  background: var(--bg);
-  color: var(--ink);
-  font-size: 16px;
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
+  font-family: var(--font-body); background: var(--bg); color: var(--ink);
+  font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased;
 }
-
 .wrap { max-width: var(--max-w); margin: 0 auto; padding: 0 32px; }
 
 /* NAV */
 header {
   position: sticky; top: 0; z-index: 100;
-  background: rgba(249,248,246,0.9);
-  backdrop-filter: blur(12px);
+  background: rgba(249,248,246,0.92); backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
 }
 .nav { display: flex; justify-content: space-between; align-items: center; height: 64px; }
@@ -51,7 +38,7 @@ header {
 }
 
 /* CASE HEADER */
-.case-header { padding: 80px 0 64px; border-bottom: 1px solid var(--border); }
+.case-header { padding: 72px 0 56px; border-bottom: 1px solid var(--border); }
 .case-label {
   font-size: 11px; font-weight: 500; letter-spacing: 0.12em;
   text-transform: uppercase; color: var(--ink-tertiary);
@@ -59,52 +46,34 @@ header {
 }
 .case-label::before { content: ''; display: block; width: 24px; height: 1px; background: var(--ink-tertiary); }
 .case-header h1 {
-  font-family: var(--font-display);
-  font-size: clamp(32px, 4.5vw, 52px);
+  font-family: var(--font-display); font-size: clamp(30px, 4vw, 48px);
   font-weight: 600; line-height: 1.1; letter-spacing: -0.02em;
-  margin-bottom: 32px; max-width: 720px;
+  margin-bottom: 32px; max-width: 680px;
 }
 .case-meta-row { display: flex; gap: 40px; flex-wrap: wrap; }
-.case-meta-item { display: flex; flex-direction: column; gap: 4px; }
+.case-meta-item { display: flex; flex-direction: column; gap: 5px; }
 .case-meta-label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-tertiary); font-weight: 500; }
-.case-meta-value { font-size: 14px; color: var(--ink); font-weight: 400; }
+.case-meta-value { font-size: 14px; color: var(--ink); }
 
-/* HERO IMAGE */
-.hero-image { margin: 64px 0; }
-.hero-image img { width: 100%; height: auto; border-radius: 16px; display: block; border: 1px solid var(--border); }
-
-/* CONTENT LAYOUT */
+/* TWO-COLUMN LAYOUT */
 .case-content {
-  display: grid;
-  grid-template-columns: 200px 1fr;
-  gap: 0 80px;
-  padding: 80px 0;
+  display: grid; grid-template-columns: 180px 1fr;
+  gap: 0 72px; padding: 72px 0;
 }
 .case-section { display: contents; }
+
 .section-label {
   font-size: 11px; font-weight: 500; letter-spacing: 0.12em;
   text-transform: uppercase; color: var(--ink-tertiary);
   padding-top: 4px; position: sticky; top: 80px; align-self: start;
 }
+
 .section-body {
-  padding-bottom: 72px;
+  padding-bottom: 64px;
   border-bottom: 1px solid var(--border);
-  margin-bottom: 72px;
+  margin-bottom: 64px;
 }
 .section-body:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-.section-body h2 {
-  font-family: var(--font-display); font-size: 22px; font-weight: 600;
-  margin-bottom: 16px; letter-spacing: -0.01em;
-}
-.section-body h3 {
-  font-family: var(--font-display); font-size: 18px; font-weight: 600;
-  margin-bottom: 10px; letter-spacing: -0.01em;
-}
-.section-body p {
-  font-size: 16px; line-height: 1.7; color: var(--ink-secondary);
-  font-weight: 300; margin-bottom: 16px;
-}
-.section-body p:last-child { margin-bottom: 0; }
 
 /* ROLE TAGS */
 .role-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
@@ -114,25 +83,40 @@ header {
   padding: 6px 14px; border-radius: 100px;
 }
 
-/* SUBSECTION — направление работы */
-.work-block {
-  padding: 40px 0;
-  border-top: 1px solid var(--border);
+/* TYPOGRAPHY */
+.section-body p {
+  font-size: 16px; line-height: 1.75; color: var(--ink-secondary);
+  font-weight: 300; margin-bottom: 0;
 }
+
+/* WORK BLOCK — каждое направление */
+.work-block { padding: 40px 0; border-top: 1px solid var(--border); }
 .work-block:first-child { padding-top: 0; border-top: none; }
 
-.task-label {
-  font-size: 11px; font-weight: 500; letter-spacing: 0.1em;
-  text-transform: uppercase; color: var(--ink-tertiary);
-  margin-bottom: 8px; margin-top: 20px;
+.work-block-header { margin-bottom: 20px; }
+.work-title {
+  font-family: var(--font-display); font-size: 18px; font-weight: 600;
+  letter-spacing: -0.01em; margin-bottom: 16px; color: var(--ink);
 }
 
-/* IMAGES GRID */
+.task-block { margin-bottom: 24px; }
+.task-block + .task-block { margin-top: 4px; }
+
+.task-kicker {
+  font-size: 11px; font-weight: 500; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--ink-tertiary);
+  margin-bottom: 8px;
+}
+
+.task-block p {
+  font-size: 15px; line-height: 1.7; color: var(--ink-secondary);
+  font-weight: 300;
+}
+
+/* IMAGE GRID */
 .img-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  margin: 28px 0;
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 12px; margin: 24px 0;
 }
 .img-grid.single { grid-template-columns: 1fr; }
 .img-grid img {
@@ -144,16 +128,17 @@ header {
 .result-list { list-style: none; margin-top: 8px; }
 .result-list li {
   font-size: 15px; color: var(--ink-secondary); font-weight: 300;
-  padding: 12px 0; border-bottom: 1px solid var(--border);
-  display: flex; align-items: baseline; gap: 12px;
+  padding: 13px 0; border-bottom: 1px solid var(--border);
+  display: flex; align-items: baseline; gap: 12px; line-height: 1.6;
 }
+.result-list li:last-child { border-bottom: none; }
 .result-list li::before { content: '→'; color: var(--ink-tertiary); font-size: 13px; flex-shrink: 0; }
 
 /* BACK */
 .back-btn {
   display: inline-flex; align-items: center; gap: 8px;
   font-size: 14px; color: var(--ink-secondary); text-decoration: none;
-  margin: 80px 0; transition: color 0.2s;
+  margin: 72px 0; transition: color 0.2s;
 }
 .back-btn:hover { color: var(--ink); }
 
@@ -165,16 +150,16 @@ header {
 }
 @media (max-width: 600px) {
   .wrap { padding: 0 20px; }
-  .case-meta-row { gap: 24px; }
+  .case-meta-row { gap: 20px; }
 }
 
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(12px); }
   to   { opacity: 1; transform: translateY(0); }
 }
-.case-label { animation: fadeUp 0.4s ease both; }
+.case-label  { animation: fadeUp 0.4s ease both; }
 .case-header h1 { animation: fadeUp 0.4s 0.08s ease both; }
-.case-meta-row { animation: fadeUp 0.4s 0.15s ease both; }
+.case-meta-row  { animation: fadeUp 0.4s 0.15s ease both; }
 </style>
 </head>
 <body>
@@ -210,30 +195,22 @@ header {
     </div>
   </div>
 
-  <div style="margin: 64px 0;">
-    <div class="img-grid">
-      <img src="assets/auth-1.png" alt="Авторизация — экран 1">
-      <img src="assets/glavnaya 2024.png" alt="Главный экран 2024">
-      <img src="assets/glavnaya 2026.png" alt="Главный экран 2026">
-    </div>
-  </div>
-
   <div class="case-content">
 
-    <!-- CONTEXT -->
     <div class="case-section">
       <div class="section-label">Контекст</div>
       <div class="section-body">
         <p>Мобильный банк с растущей пользовательской базой находился в фазе активного масштабирования после внедрения новой дизайн-концепции.</p>
+        <br>
         <p>Основная задача — обеспечить системное развитие интерфейса, пересобрать ключевые пользовательские сценарии и подготовить продукт к дальнейшему росту функциональности без потери консистентности.</p>
       </div>
     </div>
 
-    <!-- ROLE -->
     <div class="case-section">
       <div class="section-label">Роль</div>
       <div class="section-body">
         <p>Отвечала за полный цикл проектирования: анализ сценариев, структурирование пользовательских потоков, проработку взаимодействия и внедрение решений в продакшен.</p>
+        <br>
         <p>Работала в тесной связке с продакт-менеджером, аналитиками и командой разработки. В ряде задач выступала драйвером системных изменений и инициатором пересмотра логики интерфейса.</p>
         <div class="role-tags">
           <span class="role-tag">UX Architecture</span>
@@ -246,76 +223,92 @@ header {
       </div>
     </div>
 
-    <!-- WORK DIRECTIONS -->
     <div class="case-section">
       <div class="section-label">Направления работы</div>
       <div class="section-body">
 
         <div class="work-block">
-          <h3>Авторизация</h3>
-          <div class="task-label">Задача</div>
-          <p>Пересобрать сценарий входа с учётом требований безопасности, аналитики и различных пользовательских состояний. Снизить количество фрикций и повысить предсказуемость процесса.</p>
+          <div class="work-title">Авторизация</div>
+          <div class="task-block">
+            <div class="task-kicker">Задача</div>
+            <p>Пересобрать сценарий входа с учётом требований безопасности, аналитики и различных пользовательских состояний. Снизить количество фрикций и повысить предсказуемость процесса.</p>
+          </div>
           <div class="img-grid">
             <img src="assets/auth-1.png" alt="Авторизация — экран 1">
             <img src="assets/auth-2.png" alt="Авторизация — экран 2">
             <img src="assets/auth-3.png" alt="Авторизация — экран 3">
           </div>
-          <div class="task-label">Решение</div>
-          <p>Проанализированы текущие точки выхода пользователей, переработана логика переходов и состояния ошибок. Выстроена прозрачная структура сценария при сохранении требований безопасности и аналитического трекинга.</p>
+          <div class="task-block">
+            <div class="task-kicker">Решение</div>
+            <p>Проанализированы точки выхода пользователей, переработана логика переходов и состояния ошибок. Выстроена прозрачная структура сценария при сохранении требований безопасности и аналитического трекинга.</p>
+          </div>
         </div>
 
         <div class="work-block">
-          <h3>Главный экран</h3>
-          <div class="task-label">Задача</div>
-          <p>Адаптировать главный экран под новый этап развития продукта: увеличить количество функциональности, сохранив читаемость и управляемость интерфейса.</p>
+          <div class="work-title">Главный экран</div>
+          <div class="task-block">
+            <div class="task-kicker">Задача</div>
+            <p>Адаптировать главный экран под новый этап развития продукта: увеличить количество функциональности, сохранив читаемость и управляемость интерфейса.</p>
+          </div>
           <div class="img-grid">
             <img src="assets/glavnaya 2023.png" alt="Главный экран 2023">
             <img src="assets/glavnaya 2024.png" alt="Главный экран 2024">
             <img src="assets/glavnaya 2026.png" alt="Главный экран 2026">
           </div>
-          <div class="task-label">Решение</div>
-          <p>Пересобрана иерархия блоков с акцентом на приоритетные пользовательские действия. Сформирована устойчивая логика расположения сервисов и синхронизированы паттерны взаимодействия.</p>
+          <div class="task-block">
+            <div class="task-kicker">Решение</div>
+            <p>Пересобрана иерархия блоков с акцентом на приоритетные пользовательские действия. Сформирована устойчивая логика расположения сервисов и синхронизированы паттерны взаимодействия.</p>
+          </div>
         </div>
 
         <div class="work-block">
-          <h3>Платежи и переводы</h3>
-          <div class="task-label">Задача</div>
-          <p>Структурировать раздел с учётом сегментации операций, фильтрации и быстрого доступа к ключевым действиям.</p>
+          <div class="work-title">Платежи и переводы</div>
+          <div class="task-block">
+            <div class="task-kicker">Задача</div>
+            <p>Структурировать раздел с учётом сегментации операций, фильтрации и быстрого доступа к ключевым действиям.</p>
+          </div>
           <div class="img-grid">
             <img src="assets/Platez 1.png" alt="Платежи — экран 1">
             <img src="assets/Platez 2.png" alt="Платежи — экран 2">
             <img src="assets/Platez 3.png" alt="Платежи — экран 3">
           </div>
-          <div class="task-label">Решение</div>
-          <p>Выстроена логика разделения сценариев, реализована система фильтров и быстрых действий. Экраны адаптированы под обновлённый UI и интегрированы в компонентную систему.</p>
+          <div class="task-block">
+            <div class="task-kicker">Решение</div>
+            <p>Выстроена логика разделения сценариев, реализована система фильтров и быстрых действий. Экраны адаптированы под обновлённый UI и интегрированы в компонентную систему.</p>
+          </div>
         </div>
 
         <div class="work-block">
-          <h3>Раздел «Налоги и штрафы»</h3>
-          <div class="task-label">Задача</div>
-          <p>Спроектировать новый функциональный модуль с нуля без готовой концепции и формализованных требований. Самостоятельно определить пользовательские сценарии и структуру раздела.</p>
+          <div class="work-title">Раздел «Налоги и штрафы»</div>
+          <div class="task-block">
+            <div class="task-kicker">Задача</div>
+            <p>Спроектировать новый функциональный модуль с нуля без готовой концепции и формализованных требований. Самостоятельно определить пользовательские сценарии и структуру раздела.</p>
+          </div>
           <div class="img-grid">
             <img src="assets/nalogi 3.png" alt="Налоги — экран 3">
             <img src="assets/nalogi 4.png" alt="Налоги — экран 4">
             <img src="assets/nalogi 5.png" alt="Налоги — экран 5">
           </div>
-          <div class="task-label">Решение</div>
-          <p>Проведён конкурентный анализ и исследование аналогичных сервисов. Сформированы пользовательские сценарии, определена логика статусов и состояний. Разработаны hi-fi интерфейсы, обеспечивающие масштабируемость функциональности. Модуль успешно внедрён в продукт.</p>
+          <div class="task-block">
+            <div class="task-kicker">Решение</div>
+            <p>Проведён конкурентный анализ, сформированы пользовательские сценарии, определена логика статусов и состояний. Разработаны hi-fi интерфейсы с масштабируемой архитектурой. Модуль успешно внедрён в продукт.</p>
+          </div>
         </div>
 
         <div class="work-block">
-          <h3>UI Kit</h3>
-          <div class="task-label">Поддержка и развитие компонентной системы</div>
+          <div class="work-title">UI Kit</div>
+          <div class="task-block">
+            <div class="task-kicker">Поддержка и развитие компонентной системы</div>
+          </div>
           <div class="img-grid single">
             <img src="assets/uikit.png" alt="UI Kit компоненты">
           </div>
-          <p>Стандартизация компонентов, выравнивание отступов и типографики, внедрение единых паттернов взаимодействия. Обеспечена визуальная и логическая целостность интерфейса при расширении функциональности.</p>
+          <p style="font-size:15px;line-height:1.7;color:var(--ink-secondary);font-weight:300;">Стандартизация компонентов, выравнивание отступов и типографики, внедрение единых паттернов взаимодействия. Обеспечена визуальная и логическая целостность интерфейса при расширении функциональности.</p>
         </div>
 
       </div>
     </div>
 
-    <!-- RESULT -->
     <div class="case-section">
       <div class="section-label">Результат</div>
       <div class="section-body">
