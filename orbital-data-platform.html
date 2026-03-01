@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Orbital Intelligence Platform</title>
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #090D18;
+  --surface: #0F1525;
+  --surface-2: #141B2D;
+  --border: rgba(255,255,255,0.07);
+  --border-bright: rgba(255,255,255,0.12);
+  --text: #D4DCF0;
+  --text-dim: #6C7A9C;
+  --text-dimmer: #3E4A66;
+
+  --green: #00E5A0;
+  --green-bg: rgba(0,229,160,0.08);
+  --yellow: #F5C542;
+  --yellow-bg: rgba(245,197,66,0.08);
+  --red: #FF4B4B;
+  --red-bg: rgba(255,75,75,0.1);
+  --blue: #4B8EFF;
+}
+
+body {
+  font-family: 'SF Mono', 'JetBrains Mono', 'Fira Code', monospace;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 13px;
+  line-height: 1.5;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ===================== LAYOUT ===================== */
+.shell {
+  display: grid;
+  grid-template-rows: 56px 1fr;
+  min-height: 100vh;
+}
+
+.topbar {
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 28px;
+  background: var(--bg);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.topbar-left { display: flex; align-items: center; gap: 20px; }
+.topbar-logo {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--text);
+  text-decoration: none;
+}
+.topbar-logo span { color: var(--text-dim); font-weight: 400; }
+
+.sys-status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: var(--green);
+  letter-spacing: 0.06em;
+}
+.sys-status::before {
+  content: '';
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 8px var(--green);
+  animation: blink 2s ease infinite;
+}
+
+@keyframes blink {
+  0%,100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  font-size: 11px;
+  color: var(--text-dim);
+  letter-spacing: 0.04em;
+}
+
+.clock { color: var(--text); font-size: 12px; }
+
+/* ALERT BADGE in topbar */
+.topbar-alert {
+  display: flex; align-items: center; gap: 6px;
+  background: var(--red-bg);
+  border: 1px solid rgba(255,75,75,0.3);
+  border-radius: 6px;
+  padding: 4px 10px;
+  color: var(--red);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  animation: pulse-border 1.5s ease infinite;
+}
+
+@keyframes pulse-border {
+  0%,100% { border-color: rgba(255,75,75,0.3); }
+  50% { border-color: rgba(255,75,75,0.7); }
+}
+
+.body {
+  display: grid;
+  grid-template-columns: 280px 1fr 320px;
+  gap: 0;
+  height: calc(100vh - 56px);
+  overflow: hidden;
+}
+
+/* ===================== SIDEBAR ===================== */
+.sidebar {
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.sidebar-header {
+  padding: 20px 20px 12px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sidebar-title {
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.filter-row {
+  display: flex;
+  gap: 6px;
+  padding: 12px 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.filter-btn {
+  font-family: inherit;
+  font-size: 10px;
+  padding: 4px 10px;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-dim);
+  cursor: pointer;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: all 0.15s;
+}
+.filter-btn:hover, .filter-btn.active { background: var(--surface-2); color: var(--text); border-color: var(--border-bright); }
+.filter-btn.alert-filter { border-color: rgba(255,75,75,0.4); color: var(--red); }
+.filter-btn.alert-filter:hover { background: var(--red-bg); }
+
+.sat-list {
+  flex: 1;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+
+.sat-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.sat-item:hover { background: var(--surface); }
+.sat-item.active { background: var(--surface-2); }
+
+/* Critical / Alert highlight */
+.sat-item.critical {
+  background: rgba(255,75,75,0.04);
+  border-left: 2px solid var(--red);
+}
+.sat-item.critical:hover { background: rgba(255,75,75,0.08); }
+
+.sat-name {
+  font-size: 12px;
+  color: var(--text);
+  margin-bottom: 3px;
+}
+.sat-orbit {
+  font-size: 10px;
+  color: var(--text-dim);
+  letter-spacing: 0.04em;
+}
+.sat-right { text-align: right; }
+
+.status-badge {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+.status-operational { color: var(--green); background: var(--green-bg); }
+.status-maintenance { color: var(--yellow); background: var(--yellow-bg); }
+.status-alert { color: var(--red); background: var(--red-bg); animation: pulse-text 1.2s ease infinite; }
+.status-critical { color: var(--red); background: var(--red-bg); border: 1px solid rgba(255,75,75,0.4); animation: pulse-text 0.8s ease infinite; }
+
+@keyframes pulse-text {
+  0%,100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+.sat-uptime { font-size: 10px; color: var(--text-dim); margin-top: 3px; }
+
+/* ===================== MAIN ===================== */
+.main {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.kpi-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-bottom: 1px solid var(--border);
+}
+
+.kpi-card {
+  padding: 20px 24px;
+  border-right: 1px solid var(--border);
+}
+.kpi-card:last-child { border-right: none; }
+
+.kpi-label {
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 8px;
+}
+.kpi-value {
+  font-size: 26px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+.kpi-value.red { color: var(--red); }
+.kpi-sub {
+  font-size: 10px;
+  color: var(--text-dim);
+}
+.kpi-sub .up { color: var(--green); }
+.kpi-sub .dn { color: var(--red); }
+
+/* MAP */
+.map-section {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+.map-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.map-label {
+  position: absolute;
+  top: 16px; left: 20px;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+/* ===================== RIGHT PANEL ===================== */
+.right-panel {
+  border-left: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+
+.panel-section {
+  padding: 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.panel-section-title {
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 16px;
+}
+
+/* SELECTED SATELLITE */
+.selected-sat-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+.selected-sat-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+.selected-sat-id {
+  font-size: 10px;
+  color: var(--text-dim);
+  letter-spacing: 0.06em;
+}
+
+/* TELEMETRY ROWS */
+.telemetry-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+}
+.telemetry-row:last-child { border-bottom: none; }
+
+.telemetry-key {
+  font-size: 11px;
+  color: var(--text-dim);
+  letter-spacing: 0.04em;
+}
+.telemetry-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.telemetry-value {
+  font-size: 13px;
+  color: var(--text);
+  font-weight: 500;
+  min-width: 50px;
+  text-align: right;
+}
+.telemetry-value.warn { color: var(--yellow); }
+.telemetry-value.crit { color: var(--red); }
+.telemetry-value.ok { color: var(--green); }
+
+/* SPARKLINE */
+.sparkline-wrap { display: flex; align-items: center; }
+
+/* ALERT LOG */
+.alert-item {
+  display: flex;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+}
+.alert-item:last-child { border-bottom: none; }
+.alert-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  margin-top: 4px;
+  flex-shrink: 0;
+}
+.alert-dot.red { background: var(--red); box-shadow: 0 0 6px var(--red); }
+.alert-dot.yellow { background: var(--yellow); }
+.alert-time {
+  font-size: 10px;
+  color: var(--text-dim);
+  margin-bottom: 2px;
+  letter-spacing: 0.04em;
+}
+.alert-text { font-size: 11px; color: var(--text); }
+.alert-sat { font-size: 10px; color: var(--text-dim); margin-top: 2px; }
+
+</style>
+</head>
+<body>
+
+<div class="shell">
+
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <div class="topbar-left">
+      <a href="orbital-platform.html" class="topbar-logo">ORBITAL<span>/INTEL</span></a>
+      <div class="sys-status">SYS NOMINAL</div>
+      <div class="topbar-alert">⚠ 2 CRITICAL</div>
+    </div>
+    <div class="topbar-right">
+      <span>EPOCH 2026-03-01</span>
+      <span class="clock" id="clock">--:--:-- UTC</span>
+    </div>
+  </div>
+
+  <!-- BODY -->
+  <div class="body">
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+      <div class="sidebar-header">
+        <span class="sidebar-title">Constellation · 128 objects</span>
+      </div>
+      <div class="filter-row">
+        <button class="filter-btn active">All</button>
+        <button class="filter-btn alert-filter">Alert (2)</button>
+        <button class="filter-btn">Maint (3)</button>
+      </div>
+      <div class="sat-list">
+
+        <!-- CRITICAL — должен сразу бросаться в глаза -->
+        <div class="sat-item critical active">
+          <div>
+            <div class="sat-name">SAT-0047</div>
+            <div class="sat-orbit">LEO · 420 km · Incl 51.6°</div>
+          </div>
+          <div class="sat-right">
+            <div class="status-badge status-critical">CRITICAL</div>
+            <div class="sat-uptime">Signal lost 4m ago</div>
+          </div>
+        </div>
+
+        <!-- ALERT -->
+        <div class="sat-item critical">
+          <div>
+            <div class="sat-name">SAT-0112</div>
+            <div class="sat-orbit">LEO · 445 km · Incl 53.0°</div>
+          </div>
+          <div class="sat-right">
+            <div class="status-badge status-alert">ALERT</div>
+            <div class="sat-uptime">Power −18%</div>
+          </div>
+        </div>
+
+        <div class="sat-item">
+          <div>
+            <div class="sat-name">SAT-0023</div>
+            <div class="sat-orbit">LEO · 550 km · Incl 97.4°</div>
+          </div>
+          <div class="sat-right">
+            <div class="status-badge status-operational">OPER</div>
+            <div class="sat-uptime">99.97% uptime</div>
+          </div>
+        </div>
+
+        <div class="sat-item">
+          <div>
+            <div class="sat-name">SAT-1203</div>
+            <div class="sat-orbit">MEO · 8 000 km · Incl 56°</div>
+          </div>
+          <div class="sat-right">
+            <div class="status-badge status-maintenance">MAINT</div>
+            <div class="sat-uptime">Sched. 02:00 UTC</div>
+          </div>
+        </div>
+
+        <div class="sat-item">
+          <div>
+            <div class="sat-name">SAT-0088</div>
+            <div class="sat-orbit">LEO · 530 km · Incl 97.4°</div>
+          </div>
+          <div class="sat-right">
+            <div class="status-badge status-operational">OPER</div>
+            <div class="sat-uptime">99.91% uptime</div>
+          </div>
+        </div>
+
+        <div class="sat-item">
+          <div>
+            <div class="sat-name">SAT-0071</div>
+            <div class="sat-orbit">LEO · 560 km · Incl 53.0°</div>
+          </div>
+          <div class="sat-right">
+            <div class="status-badge status-operational">OPER</div>
+            <div class="sat-uptime">100% uptime</div>
+          </div>
+        </div>
+
+        <div class="sat-item">
+          <div>
+            <div class="sat-name">SAT-0099</div>
+            <div class="sat-orbit">LEO · 480 km · Incl 51.6°</div>
+          </div>
+          <div class="sat-right">
+            <div class="status-badge status-maintenance">MAINT</div>
+            <div class="sat-uptime">Firmware update</div>
+          </div>
+        </div>
+
+        <div class="sat-item">
+          <div>
+            <div class="sat-name">SAT-0034</div>
+            <div class="sat-orbit">LEO · 510 km · Incl 97.4°</div>
+          </div>
+          <div class="sat-right">
+            <div class="status-badge status-operational">OPER</div>
+            <div class="sat-uptime">99.89% uptime</div>
+          </div>
+        </div>
+
+        <div class="sat-item">
+          <div>
+            <div class="sat-name">SAT-0156</div>
+            <div class="sat-orbit">LEO · 540 km · Incl 53.0°</div>
+          </div>
+          <div class="sat-right">
+            <div class="status-badge status-operational">OPER</div>
+            <div class="sat-uptime">99.95% uptime</div>
+          </div>
+        </div>
+
+        <div class="sat-item">
+          <div>
+            <div class="sat-name">SAT-0200</div>
+            <div class="sat-orbit">MEO · 8 000 km · Incl 56°</div>
+          </div>
+          <div class="sat-right">
+            <div class="status-badge status-maintenance">MAINT</div>
+            <div class="sat-uptime">Orbit adjust</div>
+          </div>
+        </div>
+
+        <div class="sat-item">
+          <div>
+            <div class="sat-name">SAT-0011</div>
+            <div class="sat-orbit">LEO · 520 km · Incl 51.6°</div>
+          </div>
+          <div class="sat-right">
+            <div class="status-badge status-operational">OPER</div>
+            <div class="sat-uptime">100% uptime</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- MAIN -->
+    <div class="main">
+      <div class="kpi-row">
+        <div class="kpi-card">
+          <div class="kpi-label">Total Objects</div>
+          <div class="kpi-value">128</div>
+          <div class="kpi-sub">LEO / MEO / GEO</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Operational</div>
+          <div class="kpi-value">123</div>
+          <div class="kpi-sub"><span class="up">▲ 96.1%</span> nominal</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Alerts</div>
+          <div class="kpi-value red">2</div>
+          <div class="kpi-sub"><span class="dn">▲ +1 since 14:20</span></div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Maintenance</div>
+          <div class="kpi-value">3</div>
+          <div class="kpi-sub">Scheduled window</div>
+        </div>
+      </div>
+
+      <div class="map-section">
+        <div class="map-label">ORBITAL TRACK · REAL-TIME</div>
+        <canvas class="map-canvas" id="mapCanvas"></canvas>
+      </div>
+    </div>
+
+    <!-- RIGHT PANEL -->
+    <div class="right-panel">
+
+      <!-- SELECTED SAT -->
+      <div class="panel-section">
+        <div class="panel-section-title">Selected Object</div>
+        <div class="selected-sat-header">
+          <div>
+            <div class="selected-sat-name">SAT-0047</div>
+            <div class="selected-sat-id">NORAD #47281 · LEO · 420 km</div>
+          </div>
+          <div class="status-badge status-critical">CRITICAL</div>
+        </div>
+
+        <div class="telemetry-row">
+          <span class="telemetry-key">Signal Strength</span>
+          <div class="telemetry-right">
+            <div class="sparkline-wrap">
+              <canvas id="spark-signal" width="80" height="28"></canvas>
+            </div>
+            <span class="telemetry-value crit">12%</span>
+          </div>
+        </div>
+
+        <div class="telemetry-row">
+          <span class="telemetry-key">Power (W)</span>
+          <div class="telemetry-right">
+            <div class="sparkline-wrap">
+              <canvas id="spark-power" width="80" height="28"></canvas>
+            </div>
+            <span class="telemetry-value warn">41.2</span>
+          </div>
+        </div>
+
+        <div class="telemetry-row">
+          <span class="telemetry-key">Battery (%)</span>
+          <div class="telemetry-right">
+            <div class="sparkline-wrap">
+              <canvas id="spark-battery" width="80" height="28"></canvas>
+            </div>
+            <span class="telemetry-value warn">28%</span>
+          </div>
+        </div>
+
+        <div class="telemetry-row">
+          <span class="telemetry-key">Temp (°C)</span>
+          <div class="telemetry-right">
+            <div class="sparkline-wrap">
+              <canvas id="spark-temp" width="80" height="28"></canvas>
+            </div>
+            <span class="telemetry-value ok">+22.1</span>
+          </div>
+        </div>
+
+        <div class="telemetry-row">
+          <span class="telemetry-key">Altitude (km)</span>
+          <div class="telemetry-right">
+            <span class="telemetry-value">419.8</span>
+          </div>
+        </div>
+
+        <div class="telemetry-row">
+          <span class="telemetry-key">Last Contact</span>
+          <div class="telemetry-right">
+            <span class="telemetry-value crit">4m 12s ago</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ALERT LOG -->
+      <div class="panel-section">
+        <div class="panel-section-title">Alert Log</div>
+
+        <div class="alert-item">
+          <div class="alert-dot red"></div>
+          <div>
+            <div class="alert-time">14:41:03 UTC</div>
+            <div class="alert-text">Signal loss — threshold &lt;15%</div>
+            <div class="alert-sat">SAT-0047 · LEO 420 km</div>
+          </div>
+        </div>
+
+        <div class="alert-item">
+          <div class="alert-dot red"></div>
+          <div>
+            <div class="alert-time">14:38:57 UTC</div>
+            <div class="alert-text">Power subsystem degradation −18%</div>
+            <div class="alert-sat">SAT-0112 · LEO 445 km</div>
+          </div>
+        </div>
+
+        <div class="alert-item">
+          <div class="alert-dot yellow"></div>
+          <div>
+            <div class="alert-time">13:55:20 UTC</div>
+            <div class="alert-text">Battery below 35% — monitoring</div>
+            <div class="alert-sat">SAT-0047 · LEO 420 km</div>
+          </div>
+        </div>
+
+        <div class="alert-item">
+          <div class="alert-dot yellow"></div>
+          <div>
+            <div class="alert-time">12:10:44 UTC</div>
+            <div class="alert-text">Scheduled maintenance window opened</div>
+            <div class="alert-sat">SAT-1203 · MEO 8 000 km</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<script>
+// ===================== CLOCK =====================
+function updateClock() {
+  const now = new Date();
+  const h = String(now.getUTCHours()).padStart(2,'0');
+  const m = String(now.getUTCMinutes()).padStart(2,'0');
+  const s = String(now.getUTCSeconds()).padStart(2,'0');
+  document.getElementById('clock').textContent = `${h}:${m}:${s} UTC`;
+}
+setInterval(updateClock, 1000);
+updateClock();
+
+// ===================== SPARKLINES =====================
+function drawSparkline(canvasId, data, color, fillColor) {
+  const canvas = document.getElementById(canvasId);
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const W = canvas.width, H = canvas.height;
+  ctx.clearRect(0,0,W,H);
+
+  const min = Math.min(...data);
+  const max = Math.max(...data);
+  const range = max - min || 1;
+  const pad = 3;
+
+  const pts = data.map((v, i) => ({
+    x: pad + (i / (data.length - 1)) * (W - pad*2),
+    y: H - pad - ((v - min) / range) * (H - pad*2)
+  }));
+
+  // fill
+  ctx.beginPath();
+  ctx.moveTo(pts[0].x, H);
+  pts.forEach(p => ctx.lineTo(p.x, p.y));
+  ctx.lineTo(pts[pts.length-1].x, H);
+  ctx.closePath();
+  ctx.fillStyle = fillColor;
+  ctx.fill();
+
+  // line
+  ctx.beginPath();
+  pts.forEach((p, i) => i === 0 ? ctx.moveTo(p.x, p.y) : ctx.lineTo(p.x, p.y));
+  ctx.strokeStyle = color;
+  ctx.lineWidth = 1.5;
+  ctx.lineJoin = 'round';
+  ctx.stroke();
+
+  // dot at end
+  const last = pts[pts.length-1];
+  ctx.beginPath();
+  ctx.arc(last.x, last.y, 2.5, 0, Math.PI*2);
+  ctx.fillStyle = color;
+  ctx.fill();
+}
+
+// SAT-0047 — signal падает критически
+drawSparkline('spark-signal',
+  [82, 79, 74, 66, 55, 42, 30, 22, 15, 12],
+  '#FF4B4B', 'rgba(255,75,75,0.08)');
+
+// power — нестабильный, падает
+drawSparkline('spark-power',
+  [62, 60, 58, 55, 52, 48, 45, 43, 42, 41.2],
+  '#F5C542', 'rgba(245,197,66,0.06)');
+
+// battery — снижается
+drawSparkline('spark-battery',
+  [58, 54, 50, 46, 42, 38, 35, 31, 29, 28],
+  '#F5C542', 'rgba(245,197,66,0.06)');
+
+// temp — стабильная
+drawSparkline('spark-temp',
+  [21.5, 22.0, 22.3, 21.9, 22.1, 22.4, 22.2, 22.0, 22.1, 22.1],
+  '#00E5A0', 'rgba(0,229,160,0.06)');
+
+
+// ===================== MAP CANVAS =====================
+const mapCanvas = document.getElementById('mapCanvas');
+const mctx = mapCanvas.getContext('2d');
+
+function resizeMap() {
+  mapCanvas.width = mapCanvas.offsetWidth;
+  mapCanvas.height = mapCanvas.offsetHeight;
+  drawMap();
+}
+
+function drawMap() {
+  const W = mapCanvas.width, H = mapCanvas.height;
+  mctx.clearRect(0, 0, W, H);
+
+  // background gradient
+  const grad = mctx.createRadialGradient(W/2, H/2, 0, W/2, H/2, W*0.6);
+  grad.addColorStop(0, '#1A2440');
+  grad.addColorStop(1, '#090D18');
+  mctx.fillStyle = grad;
+  mctx.fillRect(0, 0, W, H);
+
+  // grid lines
+  mctx.strokeStyle = 'rgba(255,255,255,0.04)';
+  mctx.lineWidth = 1;
+  for (let x = 0; x < W; x += W/12) {
+    mctx.beginPath(); mctx.moveTo(x, 0); mctx.lineTo(x, H); mctx.stroke();
+  }
+  for (let y = 0; y < H; y += H/6) {
+    mctx.beginPath(); mctx.moveTo(0, y); mctx.lineTo(W, y); mctx.stroke();
+  }
+
+  // orbit paths
+  const orbits = [
+    { cx: W*0.5, cy: H*0.5, rx: W*0.38, ry: H*0.32, color: 'rgba(0,229,160,0.12)' },
+    { cx: W*0.5, cy: H*0.5, rx: W*0.28, ry: H*0.22, color: 'rgba(75,142,255,0.10)' },
+    { cx: W*0.48, cy: H*0.52, rx: W*0.44, ry: H*0.18, color: 'rgba(0,229,160,0.07)', dash:[6,6] },
+  ];
+
+  orbits.forEach(o => {
+    mctx.beginPath();
+    mctx.ellipse(o.cx, o.cy, o.rx, o.ry, -0.2, 0, Math.PI*2);
+    mctx.strokeStyle = o.color;
+    mctx.lineWidth = 1;
+    if (o.dash) mctx.setLineDash(o.dash); else mctx.setLineDash([]);
+    mctx.stroke();
+    mctx.setLineDash([]);
+  });
+
+  // Earth
+  const earthGrad = mctx.createRadialGradient(W/2, H/2, 0, W/2, H/2, H*0.18);
+  earthGrad.addColorStop(0, '#1E3A5F');
+  earthGrad.addColorStop(1, '#0A1628');
+  mctx.beginPath();
+  mctx.arc(W/2, H/2, H*0.17, 0, Math.PI*2);
+  mctx.fillStyle = earthGrad;
+  mctx.fill();
+  mctx.strokeStyle = 'rgba(75,142,255,0.25)';
+  mctx.lineWidth = 1;
+  mctx.stroke();
+
+  // atmosphere glow
+  const atmoGrad = mctx.createRadialGradient(W/2, H/2, H*0.17, W/2, H/2, H*0.22);
+  atmoGrad.addColorStop(0, 'rgba(75,142,255,0.08)');
+  atmoGrad.addColorStop(1, 'transparent');
+  mctx.beginPath();
+  mctx.arc(W/2, H/2, H*0.22, 0, Math.PI*2);
+  mctx.fillStyle = atmoGrad;
+  mctx.fill();
+
+  // satellites
+  const now = Date.now() / 1000;
+  const sats = [
+    { orbit: 0, speed: 0.18, angle: now*0.18, color: '#FF4B4B', critical: true, name: 'SAT-0047' },
+    { orbit: 0, speed: 0.14, angle: now*0.14 + 1.2, color: '#FF4B4B', critical: true, name: 'SAT-0112' },
+    { orbit: 1, speed: 0.22, angle: now*0.22 + 2.5, color: '#00E5A0', critical: false, name: 'SAT-0023' },
+    { orbit: 1, speed: 0.19, angle: now*0.19 + 4.1, color: '#00E5A0', critical: false, name: 'SAT-0088' },
+    { orbit: 2, speed: 0.12, angle: now*0.12 + 0.8, color: '#F5C542', critical: false, name: 'SAT-1203' },
+    { orbit: 0, speed: 0.16, angle: now*0.16 + 3.0, color: '#00E5A0', critical: false },
+    { orbit: 1, speed: 0.20, angle: now*0.20 + 5.5, color: '#00E5A0', critical: false },
+    { orbit: 2, speed: 0.11, angle: now*0.11 + 2.0, color: '#F5C542', critical: false },
+    { orbit: 0, speed: 0.17, angle: now*0.17 + 1.8, color: '#00E5A0', critical: false },
+    { orbit: 1, speed: 0.23, angle: now*0.23 + 0.4, color: '#00E5A0', critical: false },
+  ];
+
+  sats.forEach(s => {
+    const o = orbits[s.orbit];
+    const x = o.cx + o.rx * Math.cos(s.angle) * Math.cos(-0.2) - o.ry * Math.sin(s.angle) * Math.sin(-0.2);
+    const y = o.cy + o.rx * Math.cos(s.angle) * Math.sin(-0.2) + o.ry * Math.sin(s.angle) * Math.cos(-0.2);
+
+    // glow
+    if (s.critical) {
+      const glowAlpha = 0.15 + 0.1 * Math.sin(now * 4);
+      const glow = mctx.createRadialGradient(x, y, 0, x, y, 14);
+      glow.addColorStop(0, `rgba(255,75,75,${glowAlpha*3})`);
+      glow.addColorStop(1, 'transparent');
+      mctx.beginPath();
+      mctx.arc(x, y, 14, 0, Math.PI*2);
+      mctx.fillStyle = glow;
+      mctx.fill();
+    }
+
+    // dot
+    mctx.beginPath();
+    mctx.arc(x, y, s.critical ? 4 : 3, 0, Math.PI*2);
+    mctx.fillStyle = s.color;
+    mctx.fill();
+
+    // label for named
+    if (s.name) {
+      mctx.font = '9px monospace';
+      mctx.fillStyle = s.critical ? 'rgba(255,75,75,0.8)' : 'rgba(212,220,240,0.5)';
+      mctx.fillText(s.name, x + 7, y - 4);
+    }
+  });
+}
+
+// Live animation
+function animate() {
+  drawMap();
+  requestAnimationFrame(animate);
+}
+
+window.addEventListener('resize', resizeMap);
+resizeMap();
+animate();
+
+// ===================== SIDEBAR FILTER =====================
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  });
+});
+</script>
+
+</body>
+</html>

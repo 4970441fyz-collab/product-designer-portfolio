@@ -4,86 +4,576 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Anna Ziatkova — Product Designer</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
-<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+
+/* ============================
+   RESET & BASE
+============================ */
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #F9F8F6;
+  --surface: #FFFFFF;
+  --ink: #111010;
+  --ink-secondary: #6B6B6B;
+  --ink-tertiary: #A8A8A8;
+  --accent: #111010;
+  --border: #E8E6E1;
+  --card-hover: #F2F1EE;
+
+  --font-display: 'Syne', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+
+  --max-w: 1080px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--ink);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+
+/* ============================
+   LAYOUT
+============================ */
+
+.wrap {
+  width: 100%;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+/* ============================
+   NAV
+============================ */
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(249, 248, 246, 0.9);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 64px;
+}
+
+.logo {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.nav-links a {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--ink-secondary);
+  text-decoration: none;
+  padding: 6px 14px;
+  border-radius: 100px;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+}
+
+.nav-links a:hover {
+  color: var(--ink);
+  border-color: var(--border);
+  background: var(--surface);
+}
+
+/* ============================
+   HERO
+============================ */
+
+.hero {
+  padding: 100px 0 80px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 60px;
+  align-items: end;
+  border-bottom: 1px solid var(--border);
+}
+
+.hero-label {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-tertiary);
+  margin-bottom: 24px;
+}
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(42px, 5.5vw, 68px);
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin-bottom: 28px;
+  color: var(--ink);
+}
+
+.hero h1 em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--ink-secondary);
+}
+
+.hero-desc {
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--ink-secondary);
+  max-width: 480px;
+  font-weight: 300;
+}
+
+.hero-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+  padding-bottom: 8px;
+}
+
+.hero-meta-item {
+  text-align: right;
+}
+
+.hero-meta-label {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-tertiary);
+  margin-bottom: 2px;
+}
+
+.hero-meta-value {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.hero-photo {
+  display: none; /* скрываем если нет фото */
+}
+
+/* ============================
+   SELECTED WORK
+============================ */
+
+.section {
+  padding: 80px 0;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 40px;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-tertiary);
+}
+
+.section-count {
+  font-size: 12px;
+  color: var(--ink-tertiary);
+}
+
+/* ============================
+   PROJECT CARDS
+============================ */
+
+.projects {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border-top: 1px solid var(--border);
+}
+
+.project-card {
+  display: grid;
+  grid-template-columns: 56px 1fr auto;
+  gap: 32px;
+  align-items: center;
+  padding: 32px 0;
+  border-bottom: 1px solid var(--border);
+  text-decoration: none;
+  color: var(--ink);
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+
+.project-card:hover {
+  padding-left: 8px;
+  padding-right: 8px;
+  margin: 0 -8px;
+  background: var(--surface);
+  border-radius: var(--radius-md);
+  border-color: transparent;
+}
+
+.project-card:hover + .project-card {
+  border-top-color: transparent;
+}
+
+.project-num {
+  font-family: var(--font-body);
+  font-size: 12px;
+  color: var(--ink-tertiary);
+  font-weight: 300;
+  letter-spacing: 0.05em;
+}
+
+.project-info h3 {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  letter-spacing: -0.01em;
+  transition: color 0.2s;
+}
+
+.project-card:hover .project-info h3 {
+  color: var(--ink);
+}
+
+.project-info p {
+  font-size: 14px;
+  color: var(--ink-secondary);
+  font-weight: 300;
+  line-height: 1.5;
+  max-width: 480px;
+}
+
+.project-tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.tag {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-tertiary);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  padding: 4px 10px;
+  border-radius: 100px;
+  transition: all 0.2s;
+}
+
+.project-card:hover .tag {
+  background: var(--card-hover);
+}
+
+.arrow-icon {
+  font-size: 18px;
+  color: var(--ink-tertiary);
+  transition: all 0.25s ease;
+  margin-left: 16px;
+}
+
+.project-card:hover .arrow-icon {
+  color: var(--ink);
+  transform: translate(3px, -3px);
+}
+
+/* ============================
+   ABOUT STRIP
+============================ */
+
+.about-strip {
+  padding: 60px 0;
+  border-top: 1px solid var(--border);
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 40px;
+}
+
+.about-item-label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-tertiary);
+  margin-bottom: 10px;
+}
+
+.about-item-value {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1.5;
+}
+
+/* ============================
+   FOOTER
+============================ */
+
+footer {
+  border-top: 1px solid var(--border);
+  padding: 32px 0;
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-name {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink-tertiary);
+}
+
+.footer-copy {
+  font-size: 13px;
+  color: var(--ink-tertiary);
+}
+
+/* ============================
+   RESPONSIVE
+============================ */
+
+@media (max-width: 768px) {
+  .wrap {
+    padding: 0 20px;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    padding: 64px 0 60px;
+    gap: 40px;
+  }
+
+  .hero-meta {
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 24px;
+  }
+
+  .hero-meta-item {
+    text-align: left;
+  }
+
+  .project-card {
+    grid-template-columns: 1fr auto;
+    gap: 16px;
+  }
+
+  .project-num {
+    display: none;
+  }
+
+  .project-tags {
+    display: none;
+  }
+
+  .about-strip {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .footer-inner {
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+  }
+}
+
+/* ============================
+   PAGE ENTER ANIMATION
+============================ */
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.hero-label { animation: fadeUp 0.5s ease both; }
+.hero h1    { animation: fadeUp 0.5s 0.08s ease both; }
+.hero-desc  { animation: fadeUp 0.5s 0.16s ease both; }
+.hero-meta  { animation: fadeUp 0.5s 0.22s ease both; }
+
+.project-card:nth-child(1) { animation: fadeUp 0.5s 0.3s ease both; }
+.project-card:nth-child(2) { animation: fadeUp 0.5s 0.38s ease both; }
+.project-card:nth-child(3) { animation: fadeUp 0.5s 0.46s ease both; }
+
+</style>
 </head>
 <body>
 
-<header class="container nav">
-  <div class="logo">Anna Ziatkova</div>
-  <div class="nav-links">
-    <a href="https://hh.ru/resume/ab6c2427ff0cc336e70039ed1f374e78724d79" target="_blank">HH Resume</a>
-    <a href="https://t.me/Avoktaiz">Telegram</a>
+<header>
+  <div class="wrap">
+    <nav class="nav">
+      <a href="index.html" class="logo">Anna Ziatkova</a>
+      <div class="nav-links">
+        <a href="https://hh.ru/resume/ab6c2427ff0cc336e70039ed1f374e78724d79" target="_blank">Resume</a>
+        <a href="https://t.me/Avoktaiz" target="_blank">Telegram</a>
+      </div>
+    </nav>
   </div>
 </header>
 
 <main>
 
-<section class="container hero">
-  <div class="hero-text">
-    <h1>Product Designer</h1>
-    <p class="lead">
-      4+ года в цифровых продуктах и финтехе.
-      Проектирую системные интерфейсы, сложные пользовательские сценарии и масштабируемые дизайн-решения.
-    </p>
+  <div class="wrap">
 
-    <p class="about">
-      Работаю на стыке UX, UI и продуктовой логики.
-      Опыт в банковских продуктах, дизайн-системах и разработке собственных цифровых решений.
-    </p>
+    <section class="hero">
+      <div class="hero-text">
+        <p class="hero-label">Product Designer · UX/UI</p>
+        <h1>Designing systems<br>people <em>actually</em> use</h1>
+        <p class="hero-desc">
+          4+ года в цифровых продуктах и финтехе. Проектирую системные интерфейсы, сложные пользовательские сценарии и масштабируемые дизайн-решения — на стыке UX, UI и продуктовой логики.
+        </p>
+      </div>
+      <div class="hero-meta">
+        <div class="hero-meta-item">
+          <div class="hero-meta-label">Опыт</div>
+          <div class="hero-meta-value">4+ лет</div>
+        </div>
+        <div class="hero-meta-item">
+          <div class="hero-meta-label">Фокус</div>
+          <div class="hero-meta-value">Fintech · B2B</div>
+        </div>
+        <div class="hero-meta-item">
+          <div class="hero-meta-label">Инструменты</div>
+          <div class="hero-meta-value">Figma · Code</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <span class="section-title">Selected Work</span>
+        <span class="section-count">3 проекта</span>
+      </div>
+
+      <div class="projects">
+
+        <a href="mobile-bank.html" class="project-card">
+          <span class="project-num">01</span>
+          <div class="project-info">
+            <h3>Mobile Banking App</h3>
+            <p>Развитие и масштабирование банковского интерфейса. Проектирование сложных сервисных блоков и пользовательских сценариев.</p>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;">
+            <div class="project-tags">
+              <span class="tag">Fintech</span>
+              <span class="tag">UX/UI</span>
+            </div>
+            <span class="arrow-icon">↗</span>
+          </div>
+        </a>
+
+        <a href="orbital-platform.html" class="project-card">
+          <span class="project-num">02</span>
+          <div class="project-info">
+            <h3>Orbital Data Monitoring Platform</h3>
+            <p>Концепт аналитической платформы управления орбитальными данными. Системный интерфейс для мониторинга и принятия решений.</p>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;">
+            <div class="project-tags">
+              <span class="tag">Dashboard</span>
+              <span class="tag">B2B</span>
+            </div>
+            <span class="arrow-icon">↗</span>
+          </div>
+        </a>
+
+        <a href="ai-portfolio.html" class="project-card">
+          <span class="project-num">03</span>
+          <div class="project-info">
+            <h3>AI Portfolio Analysis</h3>
+            <p>AI-приложение с авторизацией, базой данных и интеграцией OpenAI API. Продукт, разработанный с использованием Vibe Coding подхода.</p>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;">
+            <div class="project-tags">
+              <span class="tag">AI Product</span>
+              <span class="tag">Fullstack</span>
+            </div>
+            <span class="arrow-icon">↗</span>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+    <div class="about-strip">
+      <div class="about-item">
+        <div class="about-item-label">Специализация</div>
+        <div class="about-item-value">Сложные пользовательские сценарии, дизайн-системы, product thinking</div>
+      </div>
+      <div class="about-item">
+        <div class="about-item-label">Домены</div>
+        <div class="about-item-value">Финтех, банкинг, аналитические платформы, AI-продукты</div>
+      </div>
+      <div class="about-item">
+        <div class="about-item-label">Подход</div>
+        <div class="about-item-value">От исследования до деплоя. Работаю с кодом, понимаю разработку</div>
+      </div>
+    </div>
+
   </div>
-
-  <div class="hero-photo">
-    <img src="assets/photo.jpg" alt="Photo placeholder">
-  </div>
-</section>
-
-<section class="container section">
-  <h2>Selected Work</h2>
-
-  <!-- CASE 1 -->
-  <a href="mobile-bank.html" class="project-card">
-    <div>
-      <h3>Mobile Banking App</h3>
-      <p>
-        Развитие и масштабирование банковского интерфейса.
-        Проектирование сложных сервисных блоков и пользовательских сценариев.
-      </p>
-    </div>
-    <span class="arrow">→</span>
-  </a>
-
-  <!-- CASE 2 -->
-  <a href="orbital-platform.html" class="project-card">
-    <div>
-      <h3>Orbital Data Monitoring Platform</h3>
-      <p>
-        Концепт аналитической платформы управления орбитальными данными.
-        Системный интерфейс для мониторинга и принятия решений.
-      </p>
-    </div>
-    <span class="arrow">→</span>
-  </a>
-
-  <!-- CASE 3 -->
-  <a href="ai-portfolio.html" class="project-card">
-    <div>
-      <h3>AI Portfolio Analysis (Vibe Coding Product)</h3>
-      <p>
-        AI-приложение с авторизацией, базой данных и интеграцией OpenAI API.
-        Продукт, разработанный с использованием Vibe Coding подхода.
-      </p>
-    </div>
-    <span class="arrow">→</span>
-  </a>
-
-</section>
 
 </main>
 
-<footer class="container footer">
-  <span>Anna Ziatkova · 2026</span>
+<footer>
+  <div class="wrap">
+    <div class="footer-inner">
+      <span class="footer-name">Anna Ziatkova</span>
+      <span class="footer-copy">2026</span>
+    </div>
+  </div>
 </footer>
 
 </body>

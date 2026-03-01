@@ -1,87 +1,392 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <title>Orbital — Product Case Study</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../style.css">
-</head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Orbital Intelligence Platform — Anna Ziatkova</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
+:root {
+  --bg: #F9F8F6;
+  --surface: #FFFFFF;
+  --ink: #111010;
+  --ink-secondary: #6B6B6B;
+  --ink-tertiary: #A8A8A8;
+  --border: #E8E6E1;
+  --font-display: 'Syne', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+  --max-w: 1080px;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--ink);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap { max-width: var(--max-w); margin: 0 auto; padding: 0 32px; }
+
+header {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(249,248,246,0.9);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+.nav { display: flex; justify-content: space-between; align-items: center; height: 64px; }
+.back-link {
+  font-size: 14px; color: var(--ink-secondary); text-decoration: none;
+  display: flex; align-items: center; gap: 6px; transition: color 0.2s;
+}
+.back-link:hover { color: var(--ink); }
+.nav-brand {
+  font-family: var(--font-display); font-size: 14px; font-weight: 500;
+  color: var(--ink-tertiary); text-decoration: none;
+}
+
+.case-header { padding: 80px 0 64px; border-bottom: 1px solid var(--border); }
+.case-label {
+  font-size: 11px; font-weight: 500; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--ink-tertiary);
+  margin-bottom: 20px; display: flex; align-items: center; gap: 12px;
+}
+.case-label::before { content: ''; display: block; width: 24px; height: 1px; background: var(--ink-tertiary); }
+.case-header h1 {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 4.5vw, 52px);
+  font-weight: 600; line-height: 1.1; letter-spacing: -0.02em;
+  margin-bottom: 32px; max-width: 720px;
+}
+.case-meta-row { display: flex; gap: 40px; flex-wrap: wrap; }
+.case-meta-item { display: flex; flex-direction: column; gap: 4px; }
+.case-meta-label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-tertiary); font-weight: 500; }
+.case-meta-value { font-size: 14px; color: var(--ink); }
+
+.hero-image { margin: 64px 0; }
+.hero-image img {
+  width: 100%; height: auto; border-radius: 16px;
+  display: block; border: 1px solid var(--border);
+}
+.hero-image a {
+  display: block;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  transition: box-shadow 0.25s;
+  text-decoration: none;
+}
+.hero-image a:hover { box-shadow: 0 12px 40px rgba(0,0,0,0.1); }
+.hero-image a img { border: none; border-radius: 0; }
+
+.img-caption {
+  text-align: center;
+  font-size: 12px;
+  color: var(--ink-tertiary);
+  margin-top: 12px;
+  letter-spacing: 0.04em;
+}
+
+.case-content {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 0 80px;
+  padding: 80px 0;
+}
+.case-section { display: contents; }
+.section-label {
+  font-size: 11px; font-weight: 500; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--ink-tertiary);
+  padding-top: 4px; position: sticky; top: 80px; align-self: start;
+}
+.section-body {
+  padding-bottom: 72px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 72px;
+}
+.section-body:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.section-body h2 {
+  font-family: var(--font-display); font-size: 22px; font-weight: 600;
+  margin-bottom: 16px; letter-spacing: -0.01em;
+}
+.section-body h3 {
+  font-family: var(--font-display); font-size: 17px; font-weight: 600;
+  margin-bottom: 8px; letter-spacing: -0.01em; color: var(--ink);
+}
+.section-body p {
+  font-size: 16px; line-height: 1.7; color: var(--ink-secondary);
+  font-weight: 300; margin-bottom: 16px;
+}
+.section-body p:last-child { margin-bottom: 0; }
+
+.role-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+.role-tag {
+  font-size: 12px; font-weight: 500; color: var(--ink);
+  background: var(--surface); border: 1px solid var(--border);
+  padding: 6px 14px; border-radius: 100px;
+}
+
+/* UX decisions grid */
+.decisions-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 24px;
+}
+.decision-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 24px;
+}
+.decision-card-label {
+  font-size: 11px; font-weight: 500; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--ink-tertiary); margin-bottom: 8px;
+}
+.decision-card p {
+  font-size: 14px !important;
+  color: var(--ink-secondary) !important;
+  margin-bottom: 0 !important;
+}
+
+/* screenshots grid */
+.screens-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 24px;
+}
+.screens-grid.full { grid-template-columns: 1fr; }
+.screens-grid img {
+  width: 100%; height: auto; border-radius: 12px;
+  display: block; border: 1px solid var(--border);
+}
+
+/* metrics */
+.metrics-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 24px;
+}
+.metric-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 24px;
+  text-align: center;
+}
+.metric-value {
+  font-family: var(--font-display);
+  font-size: 28px; font-weight: 600;
+  color: var(--ink); margin-bottom: 4px;
+}
+.metric-label {
+  font-size: 12px; color: var(--ink-tertiary);
+  letter-spacing: 0.04em;
+}
+
+.result-list { list-style: none; margin-top: 8px; }
+.result-list li {
+  font-size: 15px; color: var(--ink-secondary); font-weight: 300;
+  padding: 12px 0; border-bottom: 1px solid var(--border);
+  display: flex; align-items: baseline; gap: 12px;
+}
+.result-list li::before { content: '→'; color: var(--ink-tertiary); font-size: 13px; flex-shrink: 0; }
+
+.cta-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  margin-top: 32px; padding: 14px 28px;
+  background: var(--ink); color: #fff;
+  font-family: var(--font-body); font-size: 14px; font-weight: 500;
+  border-radius: 100px; text-decoration: none;
+  transition: opacity 0.2s, transform 0.2s;
+}
+.cta-btn:hover { opacity: 0.85; transform: translateY(-1px); }
+
+.back-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 14px; color: var(--ink-secondary); text-decoration: none;
+  margin: 80px 0; transition: color 0.2s;
+}
+.back-btn:hover { color: var(--ink); }
+
+@media (max-width: 860px) {
+  .case-content { grid-template-columns: 1fr; gap: 0; }
+  .section-label { position: static; margin-bottom: 12px; }
+  .decisions-grid, .screens-grid, .metrics-row { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  .wrap { padding: 0 20px; }
+  .case-meta-row { gap: 24px; }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.case-label { animation: fadeUp 0.4s ease both; }
+.case-header h1 { animation: fadeUp 0.4s 0.08s ease both; }
+.case-meta-row { animation: fadeUp 0.4s 0.15s ease both; }
+</style>
+</head>
 <body>
 
-  <div class="container">
+<header>
+  <div class="wrap">
+    <nav class="nav">
+      <a href="index.html" class="back-link">← Назад</a>
+      <a href="index.html" class="nav-brand">Anna Ziatkova</a>
+    </nav>
+  </div>
+</header>
 
-    <a href="../index.html" class="back-link">← Back to projects</a>
+<main>
+<div class="wrap">
 
-    <section class="project-hero">
-      <h1>Orbital</h1>
-      <p class="project-subtitle">
-        Satellite data monitoring dashboard for aerospace analytics
-      </p>
-    </section>
+  <div class="case-header">
+    <p class="case-label">Dashboard · B2B · Concept</p>
+    <h1>Orbital Intelligence Platform — мониторинг спутниковой инфраструктуры</h1>
+    <div class="case-meta-row">
+      <div class="case-meta-item">
+        <span class="case-meta-label">Тип</span>
+        <span class="case-meta-value">Концепт / Self-initiated</span>
+      </div>
+      <div class="case-meta-item">
+        <span class="case-meta-label">Роль</span>
+        <span class="case-meta-value">Full cycle — UX → UI → Frontend</span>
+      </div>
+      <div class="case-meta-item">
+        <span class="case-meta-label">Домен</span>
+        <span class="case-meta-value">Aerospace · Realtime Dashboard</span>
+      </div>
+    </div>
+  </div>
 
-    <section class="project-section">
-      <h2>Overview</h2>
-      <p>
-        Orbital is a data monitoring platform designed for tracking satellite telemetry,
-        mission status, and environmental data in real time. The goal was to design
-        a clean and scalable dashboard system for aerospace operators.
-      </p>
-    </section>
+  <!-- HERO — скриншот дашборда, кликабельный -->
+  <div class="hero-image">
+    <a href="orbital-data-platform.html" target="_blank" title="Открыть дашборд">
+      <img src="assets/orbital-hero.png" alt="Orbital Intelligence Platform Dashboard"
+           onerror="this.src=''; this.parentNode.style.background='#111827'; this.parentNode.style.height='480px'; this.parentNode.style.display='flex'; this.parentNode.style.alignItems='center'; this.parentNode.style.justifyContent='center'; this.parentNode.innerHTML='<span style=\'color:#4E5D82;font-family:DM Sans,sans-serif;font-size:14px;\'>Скриншот дашборда — orbital-hero.png</span>'">
+    </a>
+    <p class="img-caption">Нажмите, чтобы открыть живой дашборд →</p>
+  </div>
 
-    <section class="project-section">
-      <h2>Problem</h2>
-      <p>
-        Aerospace teams work with complex telemetry systems and fragmented monitoring tools.
-        The existing workflow required switching between multiple systems,
-        slowing down mission analysis and increasing cognitive load.
-      </p>
-    </section>
+  <div class="case-content">
 
-    <section class="project-section">
-      <h2>Solution</h2>
-      <p>
-        I designed a unified dashboard that centralizes satellite tracking,
-        system health monitoring, and mission analytics into one structured interface.
-      </p>
-    </section>
+    <!-- CONTEXT -->
+    <div class="case-section">
+      <div class="section-label">Контекст</div>
+      <div class="section-body">
+        <p>С увеличением числа аппаратов в созвездиях (constellations) операторы сталкиваются с избытком сырых данных. Главный риск — пропустить критическое отклонение из-за когнитивной перегрузки.</p>
+        <p>Существующие решения часто перегружены текстом и не дают мгновенного понимания статуса системы. Интерфейс должен обеспечивать принятие решений в режиме 24/7.</p>
+      </div>
+    </div>
 
-    <section class="project-section">
-      <h2>Design System</h2>
-      <ul>
-        <li>Modular card-based layout</li>
-        <li>Minimal typography hierarchy</li>
-        <li>High-contrast data visualization</li>
-        <li>Scalable grid system</li>
-      </ul>
-    </section>
-
-    <section class="project-section">
-      <h2>Dashboard Preview</h2>
-
-      <div class="dashboard-preview">
-        <div class="dashboard-card">
-          <h3>Satellite Status</h3>
-          <p>Active: 12</p>
-          <p>Standby: 3</p>
-        </div>
-
-        <div class="dashboard-card">
-          <h3>Telemetry</h3>
-          <p>Signal Strength: Stable</p>
-          <p>Temperature: Nominal</p>
-        </div>
-
-        <div class="dashboard-card">
-          <h3>Mission Analytics</h3>
-          <p>Orbit Deviation: 0.02%</p>
-          <p>Fuel Usage: 78%</p>
+    <!-- PROBLEM -->
+    <div class="case-section">
+      <div class="section-label">Задача</div>
+      <div class="section-body">
+        <p>Спроектировать интерфейс управления верхнего уровня (L1), который позволяет оператору за 3 секунды оценить здоровье всей группировки и быстро декомпозировать проблему до конкретного аппарата.</p>
+        <div class="metrics-row">
+          <div class="metric-card">
+            <div class="metric-value">128</div>
+            <div class="metric-label">спутников в группировке</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-value">3 сек</div>
+            <div class="metric-label">целевое время оценки статуса</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-value">24/7</div>
+            <div class="metric-label">режим работы ситуационного центра</div>
+          </div>
         </div>
       </div>
+    </div>
 
-    </section>
+    <!-- UX DECISIONS -->
+    <div class="case-section">
+      <div class="section-label">UX-стратегия</div>
+      <div class="section-body">
+        <p>Четыре продуктовых решения, которые формируют логику интерфейса:</p>
+        <div class="decisions-grid">
+          <div class="decision-card">
+            <div class="decision-card-label">Визуальные приоритеты</div>
+            <p>Цветовое кодирование по стандартам безопасности: Operational / Maintenance / Alert / Critical. Аномалия считывается мгновенно, без чтения текста.</p>
+          </div>
+          <div class="decision-card">
+            <div class="decision-card-label">Сжатие данных</div>
+            <p>KPI-блоки агрегируют телеметрию 128 спутников в 4 ключевые метрики. Оператор видит целое, прежде чем углубляться в детали.</p>
+          </div>
+          <div class="decision-card">
+            <div class="decision-card-label">Масштабируемость</div>
+            <p>Сетка и компоненты рассчитаны на сотни объектов. Фильтрация по статусам и lazy load обеспечивают производительность.</p>
+          </div>
+          <div class="decision-card">
+            <div class="decision-card-label">Lights-out UI</div>
+            <p>Тёмная тема снижает нагрузку на зрение при работе в ситуационных центрах 24/7 и усиливает контраст критических индикаторов.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SCREENS -->
+    <div class="case-section">
+      <div class="section-label">Интерфейс</div>
+      <div class="section-body">
+
+        <h3>Обзорный дашборд</h3>
+        <p>Главный экран агрегирует состояние всей группировки: KPI-метрики, список объектов с цветовыми статусами и карта орбитальной зоны.</p>
+        <div class="screens-grid full">
+          <img src="assets/orbital-dashboard.png" alt="Orbital Dashboard Overview"
+               onerror="this.style.display='none'">
+        </div>
+
+        <h3 style="margin-top:40px;">Статус-логика и аномалии</h3>
+        <p>Интерфейс показывает полный спектр состояний: от штатной работы до критических отклонений. Красный Alert мгновенно выделяется в списке и требует действия оператора.</p>
+        <div class="screens-grid">
+          <img src="assets/orbital-alert.png" alt="Alert State"
+               onerror="this.style.display='none'">
+          <img src="assets/orbital-telemetry.png" alt="Telemetry Sparkline"
+               onerror="this.style.display='none'">
+        </div>
+
+        <h3 style="margin-top:40px;">Детальная телеметрия</h3>
+        <p>Карточка объекта показывает динамику сигнала в виде sparkline — не просто текущее значение, а тренд за последние минуты. Падение сигнала диагностируется раньше, чем достигнет порога Alert.</p>
+        <div class="screens-grid full">
+          <img src="assets/orbital-detail.png" alt="Satellite Detail View"
+               onerror="this.style.display='none'">
+        </div>
+
+      </div>
+    </div>
+
+    <!-- BUSINESS VALUE -->
+    <div class="case-section">
+      <div class="section-label">Бизнес-ценность</div>
+      <div class="section-body">
+        <ul class="result-list">
+          <li>Снижение MTTR (Mean Time To Repair) — быстрая идентификация спутников, требующих обслуживания</li>
+          <li>Оптимизация штата — один оператор эффективно контролирует большее число объектов</li>
+          <li>Снижение когнитивной нагрузки — Lights-out UI и система приоритетов уменьшают риск пропустить аномалию</li>
+          <li>Масштабируемость — архитектура интерфейса рассчитана на рост группировки без потери управляемости</li>
+        </ul>
+        <a href="orbital-data-platform.html" target="_blank" class="cta-btn">
+          Открыть дашборд ↗
+        </a>
+      </div>
+    </div>
 
   </div>
 
+  <a href="index.html" class="back-btn">← Все проекты</a>
+
+</div>
+</main>
 </body>
 </html>
