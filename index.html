@@ -190,6 +190,24 @@ header {
 }
 
 .hero-photo {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid var(--border);
+  flex-shrink: 0;
+  align-self: flex-start;
+  margin-top: 2px;
+}
+
+.hero-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.hero-photo {
   display: none; /* скрываем если нет фото */
 }
 
@@ -455,7 +473,12 @@ footer {
 <header>
   <div class="wrap">
     <nav class="nav">
-      <a href="index.html" class="logo">Anna Ziatkova</a>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <div class="hero-photo" style="width:32px;height:32px;border-radius:50%;overflow:hidden;border:1.5px solid var(--border);flex-shrink:0;">
+          <img src="assets/photo.jpg" alt="Anna Ziatkova" onerror="this.parentNode.style.display='none'">
+        </div>
+        <a href="index.html" class="logo">Anna Ziatkova</a>
+      </div>
       <div class="nav-links">
         <a href="https://hh.ru/resume/ab6c2427ff0cc336e70039ed1f374e78724d79" target="_blank">Resume</a>
         <a href="https://t.me/Avoktaiz" target="_blank">Telegram</a>
