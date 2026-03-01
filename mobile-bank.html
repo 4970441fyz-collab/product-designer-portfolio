@@ -69,14 +69,14 @@ header {
 }
 
 .section-body {
-  padding-bottom: 64px;
+  padding-bottom: 72px;
   border-bottom: 1px solid var(--border);
-  margin-bottom: 64px;
+  margin-bottom: 72px;
 }
 .section-body:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
 
 /* ROLE TAGS */
-.role-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+.role-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; margin-bottom: 0; }
 .role-tag {
   font-size: 12px; font-weight: 500; color: var(--ink);
   background: var(--surface); border: 1px solid var(--border);
@@ -89,8 +89,11 @@ header {
   font-weight: 300; margin-bottom: 0;
 }
 
+/* Space between section-body blocks */
+.section-body > p + p { margin-top: 16px; }
+
 /* WORK BLOCK — каждое направление */
-.work-block { padding: 40px 0; border-top: 1px solid var(--border); }
+.work-block { padding: 48px 0; border-top: 1px solid var(--border); }
 .work-block:first-child { padding-top: 0; border-top: none; }
 
 .work-block-header { margin-bottom: 20px; }
@@ -99,8 +102,8 @@ header {
   letter-spacing: -0.01em; margin-bottom: 16px; color: var(--ink);
 }
 
-.task-block { margin-bottom: 24px; }
-.task-block + .task-block { margin-top: 4px; }
+.task-block { margin-bottom: 28px; }
+.task-block + .task-block { margin-top: 0; }
 
 .task-kicker {
   font-size: 11px; font-weight: 500; letter-spacing: 0.1em;
