@@ -12,8 +12,8 @@
   --bg: #F9F8F6;
   --surface: #FFFFFF;
   --ink: #111010;
-  --ink-secondary: #6B6B6B;
-  --ink-tertiary: #A8A8A8;
+  --ink-secondary: #444444;
+  --ink-tertiary: #888888;
   --border: #E8E6E1;
   --font-display: 'Syne', sans-serif;
   --font-body: 'DM Sans', sans-serif;
@@ -216,8 +216,9 @@ header {
 .back-btn:hover { color: var(--ink); }
 
 @media (max-width: 860px) {
-  .case-content { grid-template-columns: 1fr; gap: 0; }
+  .case-section { grid-template-columns: 1fr; gap: 0; }
   .section-label { position: static; margin-bottom: 12px; }
+  .result-card { padding: 28px 24px; }
   .decisions-grid, .screens-grid, .metrics-row { grid-template-columns: 1fr; }
 }
 @media (max-width: 600px) {
@@ -386,14 +387,6 @@ header {
   </div>
 
   <!-- HERO — скриншот дашборда, кликабельный -->
-  <div class="hero-image">
-    <a href="orbital-data-platform.html" target="_blank" title="Открыть дашборд">
-      <img src="assets/orbital-hero.png" alt="Orbital Intelligence Platform Dashboard"
-           onerror="this.src=''; this.parentNode.style.background='#111827'; this.parentNode.style.height='480px'; this.parentNode.style.display='flex'; this.parentNode.style.alignItems='center'; this.parentNode.style.justifyContent='center'; this.parentNode.innerHTML='<span style=\'color:#4E5D82;font-family:DM Sans,sans-serif;font-size:14px;\'>Скриншот дашборда — orbital-hero.png</span>'">
-    </a>
-    <p class="img-caption">Нажмите, чтобы открыть живой дашборд →</p>
-  </div>
-
   <div class="case-content">
 
     <!-- CONTEXT -->
@@ -635,12 +628,15 @@ header {
     <div class="case-section">
       <div class="section-label">Бизнес-ценность</div>
       <div class="section-body">
-        <ul class="result-list">
-          <li>Снижение MTTR (Mean Time To Repair) — быстрая идентификация спутников, требующих обслуживания</li>
-          <li>Оптимизация штата — один оператор эффективно контролирует большее число объектов</li>
-          <li>Снижение когнитивной нагрузки — Lights-out UI и система приоритетов уменьшают риск пропустить аномалию</li>
-          <li>Масштабируемость — архитектура интерфейса рассчитана на рост группировки без потери управляемости</li>
-        </ul>
+        <div class="result-card">
+          <div class="result-kicker">Бизнес-ценность</div>
+          <ul class="result-list">
+            <li>Снижение MTTR (Mean Time To Repair) — быстрая идентификация спутников, требующих обслуживания</li>
+            <li>Оптимизация штата — один оператор эффективно контролирует большее число объектов</li>
+            <li>Снижение когнитивной нагрузки — Lights-out UI и система приоритетов уменьшают риск пропустить аномалию</li>
+            <li>Масштабируемость — архитектура интерфейса рассчитана на рост группировки без потери управляемости</li>
+          </ul>
+        </div>
         <a href="orbital-data-platform.html" target="_blank" class="cta-btn">
           Открыть дашборд ↗
         </a>
