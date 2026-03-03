@@ -159,59 +159,6 @@ footer { border-top: 1px solid var(--border); padding: 28px 0; }
 .project-card:nth-child(1) { animation: fadeUp 0.45s 0.28s ease both; }
 .project-card:nth-child(2) { animation: fadeUp 0.45s 0.35s ease both; }
 .project-card:nth-child(3) { animation: fadeUp 0.45s 0.42s ease both; }
-
-/* GRAPHIC SECTION */
-.graphic-section { padding: 0 0 72px; }
-
-.graphic-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
-  max-width: 760px;
-}
-
-.graphic-item {
-  border-radius: 12px;
-  overflow: hidden;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  position: relative;
-  aspect-ratio: 3 / 4;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-.graphic-item:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 28px rgba(0,0,0,0.08);
-  z-index: 2;
-}
-.graphic-item img {
-  width: 100%; height: 100%;
-  object-fit: cover; display: block;
-}
-
-/* hover label */
-.graphic-label {
-  position: absolute; bottom: 10px; left: 10px;
-  background: rgba(255,255,255,0.92);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255,255,255,0.5);
-  border-radius: 6px;
-  padding: 4px 10px;
-  font-size: 10px; font-weight: 500; color: var(--ink);
-  letter-spacing: 0.04em;
-  opacity: 0; transform: translateY(4px);
-  transition: opacity 0.2s, transform 0.2s;
-  pointer-events: none;
-}
-.graphic-item:hover .graphic-label { opacity: 1; transform: translateY(0); }
-
-@media (max-width: 768px) {
-  .graphic-grid { grid-template-columns: repeat(4, 1fr); max-width: 100%; }
-}
-@media (max-width: 480px) {
-  .graphic-grid { grid-template-columns: repeat(2, 1fr); }
-}
-
 </style>
 </head>
 <body>
@@ -321,34 +268,6 @@ footer { border-top: 1px solid var(--border); padding: 28px 0; }
     </div>
 
   </div>
-
-    <!-- GRAPHIC & VISUAL -->
-    <section class="graphic-section">
-      <div class="section-header">
-        <span class="section-title">Visual & Graphic</span>
-        <span class="section-count">АльфаСтрахование-Жизнь · Брендинг · Коммуникации</span>
-      </div>
-
-      <div class="graphic-grid">
-        <div class="graphic-item">
-          <img src="assets/graphic/merch-bags.png" alt="Мерч — рюкзаки">
-          <div class="graphic-label">Мерч · Выходи за рамки</div>
-        </div>
-        <div class="graphic-item">
-          <img src="assets/graphic/stories-formula.png" alt="Сторис — Формула Успеха">
-          <div class="graphic-label">Сторис · Формула Успеха</div>
-        </div>
-        <div class="graphic-item">
-          <img src="assets/graphic/email.png" alt="Email-рассылка">
-          <div class="graphic-label">Email · Настольные игры</div>
-        </div>
-        <div class="graphic-item">
-          <img src="assets/graphic/colorbook.png" alt="Style Guide АСЖ">
-          <div class="graphic-label">Style Guide · АСЖ</div>
-        </div>
-      </div>
-    </section>
-
 </main>
 
 <footer>
