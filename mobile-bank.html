@@ -73,11 +73,12 @@ header {
 }
 
 .section-body {
+  padding-top: 64px;
   padding-bottom: 80px;
-  padding-top: 0;
   border-bottom: 1px solid var(--border);
-  margin-bottom: 0;
 }
+
+.case-content > .case-section:first-child .section-body { padding-top: 0; }
 .section-body:last-child { border-bottom: none; padding-bottom: 0; }
 
 /* ROLE TAGS */
