@@ -3,50 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Anna Ziatkova — Product Designer</title>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<title>Анна Зятькова — Продуктовый дизайнер</title>
+<meta name="description" content="Продуктовый дизайнер с 4+ годами в финтехе и банкинге. Проектирую сложные интерфейсы, CRM-системы, мобильные приложения и дизайн-системы.">
+<meta property="og:title" content="Анна Зятькова — Продуктовый дизайнер">
+<meta property="og:description" content="Проектирую сложные интерфейсы — от пользовательского сценария до деплоя. Финтех, банкинг, enterprise UI.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://product-designer-portfolio-gamma.vercel.app">
+<meta property="og:image" content="https://product-designer-portfolio-gamma.vercel.app/assets/og-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="css/style.css">
 <style>
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-:root {
-  --bg: #F9F8F6; --surface: #FFFFFF; --ink: #111010;
-  --ink-secondary: #6B6B6B; --ink-tertiary: #A8A8A8;
-  --border: #E8E6E1; --card-hover: #F2F1EE;
-  --font-display: 'Syne', sans-serif; --font-body: 'DM Sans', sans-serif;
-  --radius-md: 16px; --max-w: 1080px;
-}
-html { scroll-behavior: smooth; }
-body {
-  font-family: var(--font-body); background: var(--bg); color: var(--ink);
-  font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; min-height: 100vh;
-}
-.wrap { width: 100%; max-width: var(--max-w); margin: 0 auto; padding: 0 32px; }
-
-/* NAV */
-header {
-  position: sticky; top: 0; z-index: 100;
-  background: rgba(249,248,246,0.92); backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--border);
-}
-.nav { display: flex; justify-content: space-between; align-items: center; height: 64px; }
-.nav-left { display: flex; align-items: center; gap: 10px; }
-.nav-photo {
-  width: 30px; height: 30px; border-radius: 50%; overflow: hidden;
-  border: 1.5px solid var(--border); flex-shrink: 0; background: var(--border);
-}
-.nav-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.logo {
-  font-family: var(--font-display); font-weight: 600; font-size: 15px;
-  letter-spacing: 0.02em; color: var(--ink); text-decoration: none;
-}
-.nav-links { display: flex; gap: 6px; align-items: center; }
-.nav-links a {
-  font-size: 14px; font-weight: 400; color: var(--ink-secondary);
-  text-decoration: none; padding: 6px 14px; border-radius: 100px;
-  transition: all 0.2s; border: 1px solid transparent;
-}
-.nav-links a:hover { color: var(--ink); border-color: var(--border); background: var(--surface); }
-
-/* HERO */
+/* ── HERO ── */
 .hero {
   padding: 80px 0 72px;
   display: grid; grid-template-columns: 1fr auto;
@@ -64,7 +31,7 @@ header {
   text-transform: uppercase; color: var(--ink-tertiary);
 }
 .hero h1 {
-  font-family: var(--font-display); font-size: clamp(38px, 5vw, 62px);
+  font-family: var(--font-display); font-size: clamp(36px, 5vw, 60px);
   font-weight: 600; line-height: 1.08; letter-spacing: -0.02em;
   margin-bottom: 24px; color: var(--ink);
 }
@@ -81,16 +48,10 @@ header {
 }
 .hero-meta-value { font-family: var(--font-display); font-size: 14px; font-weight: 500; color: var(--ink); }
 
-/* SECTION */
+/* ── SECTION ── */
 .section { padding: 72px 0; }
-.section-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 32px; }
-.section-title {
-  font-family: var(--font-display); font-size: 11px; font-weight: 500;
-  letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-tertiary);
-}
-.section-count { font-size: 12px; color: var(--ink-tertiary); }
 
-/* PROJECT CARDS */
+/* ── PROJECT CARDS ── */
 .projects { display: flex; flex-direction: column; border-top: 1px solid var(--border); }
 .project-card {
   display: grid; grid-template-columns: 48px 1fr auto;
@@ -110,55 +71,55 @@ header {
 .project-info p { font-size: 14px; color: var(--ink-secondary); font-weight: 300; line-height: 1.55; max-width: 500px; }
 .project-right { display: flex; align-items: center; gap: 12px; }
 .project-tags { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
-.tag {
-  font-size: 11px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase;
-  color: var(--ink-tertiary); background: var(--bg); border: 1px solid var(--border);
-  padding: 4px 10px; border-radius: 100px; transition: all 0.2s;
-}
 .project-card:hover .tag { background: var(--card-hover); }
 .arrow-icon { font-size: 16px; color: var(--ink-tertiary); transition: all 0.2s; }
 .project-card:hover .arrow-icon { color: var(--ink); transform: translate(3px, -3px); }
 
-/* ABOUT */
+/* ── ABOUT ── */
 .about-strip {
-  padding: 56px 0; border-top: 1px solid var(--border);
+  padding: 56px 0 72px; border-top: 1px solid var(--border);
   display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 40px;
 }
 .about-item-label {
   font-size: 11px; font-weight: 500; letter-spacing: 0.12em;
   text-transform: uppercase; color: var(--ink-tertiary); margin-bottom: 10px;
 }
-.about-item-value { font-family: var(--font-display); font-size: 14px; font-weight: 500; color: var(--ink); line-height: 1.55; }
+.about-item-value { font-family: var(--font-display); font-size: 14px; font-weight: 500; color: var(--ink); line-height: 1.6; }
 
-/* FOOTER */
-footer { border-top: 1px solid var(--border); padding: 28px 0; }
-.footer-inner { display: flex; justify-content: space-between; align-items: center; }
-.footer-name { font-family: var(--font-display); font-size: 13px; font-weight: 500; color: var(--ink-tertiary); }
-.footer-copy { font-size: 13px; color: var(--ink-tertiary); }
+/* ── CTA / CONTACT ── */
+.contact-strip {
+  padding: 72px 0;
+  border-top: 1px solid var(--border);
+  display: flex; justify-content: space-between; align-items: center;
+}
+.contact-text h2 {
+  font-family: var(--font-display); font-size: clamp(22px, 3vw, 32px);
+  font-weight: 600; letter-spacing: -0.02em; margin-bottom: 8px;
+}
+.contact-text p { font-size: 15px; color: var(--ink-secondary); font-weight: 300; }
+.contact-links { display: flex; gap: 12px; flex-shrink: 0; }
+.contact-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 12px 24px; border-radius: var(--radius-sm); font-size: 14px; font-weight: 500;
+  text-decoration: none; transition: all 0.2s;
+}
+.contact-btn.primary { background: var(--ink); color: #fff; }
+.contact-btn.primary:hover { opacity: 0.85; transform: translateY(-1px); }
+.contact-btn.secondary { border: 1px solid var(--border); color: var(--ink); }
+.contact-btn.secondary:hover { background: var(--surface); border-color: var(--ink-secondary); }
 
-/* RESPONSIVE */
+/* ── RESPONSIVE ── */
 @media (max-width: 768px) {
-  .wrap { padding: 0 20px; }
   .hero { grid-template-columns: 1fr; padding: 56px 0; gap: 32px; }
-  .hero-meta { align-items: flex-start; flex-direction: row; gap: 20px; flex-wrap: wrap; }
+  .hero-meta { align-items: flex-start; flex-direction: row; flex-wrap: wrap; gap: 20px; }
   .hero-meta-item { text-align: left; }
   .project-card { grid-template-columns: 1fr auto; gap: 16px; }
   .project-num, .project-tags { display: none; }
   .about-strip { grid-template-columns: 1fr; gap: 24px; }
-  .footer-inner { flex-direction: column; gap: 8px; text-align: center; }
+  .contact-strip { flex-direction: column; gap: 32px; align-items: flex-start; }
+  .contact-links { flex-direction: column; width: 100%; }
+  .contact-btn { justify-content: center; }
 }
-
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(14px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-.hero-top  { animation: fadeUp 0.45s ease both; }
-.hero h1   { animation: fadeUp 0.45s 0.08s ease both; }
-.hero-desc { animation: fadeUp 0.45s 0.15s ease both; }
-.hero-meta { animation: fadeUp 0.45s 0.2s ease both; }
-.project-card:nth-child(1) { animation: fadeUp 0.45s 0.28s ease both; }
-.project-card:nth-child(2) { animation: fadeUp 0.45s 0.35s ease both; }
-.project-card:nth-child(3) { animation: fadeUp 0.45s 0.42s ease both; }
 </style>
 </head>
 <body>
@@ -168,13 +129,13 @@ footer { border-top: 1px solid var(--border); padding: 28px 0; }
     <nav class="nav">
       <div class="nav-left">
         <div class="nav-photo">
-          <img src="assets/photo.jpg" alt="Anna" onerror="this.parentNode.style.background='#E8E6E1'">
+          <img src="assets/photo.jpg" alt="Анна" loading="lazy">
         </div>
-        <a href="index.html" class="logo">Anna Ziatkova</a>
+        <a href="index.html" class="logo">Анна Зятькова</a>
       </div>
       <div class="nav-links">
-        <a href="https://hh.ru/resume/ab6c2427ff0cc336e70039ed1f374e78724d79" target="_blank">Resume</a>
-        <a href="https://t.me/Avoktaiz" target="_blank">Telegram</a>
+        <a href="https://hh.ru/resume/ab6c2427ff0cc336e70039ed1f374e78724d79" target="_blank" rel="noopener">Резюме</a>
+        <a href="https://t.me/Avoktaiz" target="_blank" rel="noopener">Telegram</a>
       </div>
     </nav>
   </div>
@@ -185,16 +146,16 @@ footer { border-top: 1px solid var(--border); padding: 28px 0; }
 
     <section class="hero">
       <div class="hero-text">
-        <div class="hero-top">
+        <div class="hero-top fade-1">
           <div class="hero-avatar">
-            <img src="assets/photo.jpg" alt="Anna Ziatkova" onerror="this.parentNode.style.background='#E8E6E1'">
+            <img src="assets/photo.jpg" alt="Анна Зятькова">
           </div>
-          <span class="hero-label">Product Designer · UX/UI</span>
+          <span class="hero-label">Продуктовый дизайнер · UX/UI</span>
         </div>
-        <h1>Designing systems<br>people <em>actually</em> use</h1>
-        <p class="hero-desc">4+ года в цифровых продуктах и финтехе. Проектирую системные интерфейсы, сложные пользовательские сценарии и масштабируемые дизайн-решения — на стыке UX, UI и продуктовой логики.</p>
+        <h1 class="fade-2">Проектирую сложные интерфейсы —<br><em>от сценария до деплоя</em></h1>
+        <p class="hero-desc fade-3">4+ года в финтехе и банкинге. Проектирую системные интерфейсы и сложные пользовательские сценарии: CRM, мобильные банки, дизайн-системы. Образование в области психологии помогает точнее видеть поведение пользователей.</p>
       </div>
-      <div class="hero-meta">
+      <div class="hero-meta fade-4">
         <div class="hero-meta-item">
           <div class="hero-meta-label">Опыт</div>
           <div class="hero-meta-value">4+ лет</div>
@@ -212,37 +173,37 @@ footer { border-top: 1px solid var(--border); padding: 28px 0; }
 
     <section class="section">
       <div class="section-header">
-        <span class="section-title">Selected Work</span>
-        <span class="section-count">3 проекта</span>
+        <span class="section-title">Избранные проекты</span>
+        <span style="font-size:12px;color:var(--ink-tertiary);">4 кейса</span>
       </div>
       <div class="projects">
-        <a href="mobile-bank.html" class="project-card">
+        <a href="mobile-bank.html" class="project-card fade-5">
           <span class="project-num">01</span>
           <div class="project-info">
-            <h3>Mobile Banking App</h3>
-            <p>Развитие и масштабирование банковского интерфейса. Проектирование сложных сервисных блоков и пользовательских сценариев.</p>
+            <h3>Металлинвестбанк — мобильный банк</h3>
+            <p>Масштабирование банковского интерфейса. Проектирование сложных сервисных блоков: авторизация, платежи, модуль «Налоги и штрафы» с нуля.</p>
           </div>
           <div class="project-right">
-            <div class="project-tags"><span class="tag">Fintech</span><span class="tag">UX/UI</span></div>
+            <div class="project-tags"><span class="tag">Fintech</span><span class="tag">UX/UI</span><span class="tag">Mobile</span></div>
             <span class="arrow-icon">↗</span>
           </div>
         </a>
-        <a href="psytools.html" class="project-card">
+        <a href="psytools.html" class="project-card fade-6">
           <span class="project-num">02</span>
           <div class="project-info">
             <h3>PsyTools — инструменты психологической самопомощи</h3>
-            <p>Веб-сервис с психологическими картами для самостоятельной работы и инструментарий для практикующих психологов. Проектирование UX и UI с нуля.</p>
+            <p>Веб-сервис с АКТ-картами для самостоятельной работы и инструментарий для практикующих психологов. UX и UI с нуля.</p>
           </div>
           <div class="project-right">
             <div class="project-tags"><span class="tag">UX/UI</span><span class="tag">Web</span></div>
             <span class="arrow-icon">↗</span>
           </div>
         </a>
-        <a href="ai-portfolio.html" class="project-card">
+        <a href="ai-portfolio.html" class="project-card fade-7">
           <span class="project-num">03</span>
           <div class="project-info">
-            <h3>AI Portfolio Analysis</h3>
-            <p>AI-приложение с авторизацией, базой данных и интеграцией OpenAI API. Продукт, разработанный с использованием Vibe Coding подхода.</p>
+            <h3>Portfolio Review Board — AI-инструмент для UX-критики</h3>
+            <p>AI-приложение с авторизацией, базой данных и интеграцией OpenAI API. Разработан полностью самостоятельно с Vibe Coding.</p>
           </div>
           <div class="project-right">
             <div class="project-tags"><span class="tag">AI Product</span><span class="tag">Fullstack</span></div>
@@ -255,15 +216,26 @@ footer { border-top: 1px solid var(--border); padding: 28px 0; }
     <div class="about-strip">
       <div class="about-item">
         <div class="about-item-label">Специализация</div>
-        <div class="about-item-value">Сложные пользовательские сценарии, дизайн-системы, product thinking</div>
+        <div class="about-item-value">Сложные пользовательские сценарии, enterprise UI, дизайн-системы, product thinking</div>
       </div>
       <div class="about-item">
-        <div class="about-item-label">Домены</div>
-        <div class="about-item-value">Финтех, банкинг, аналитические платформы, AI-продукты</div>
+        <div class="about-item-label">Опыт работы</div>
+        <div class="about-item-value">Металлинвестбанк · АльфаСтрахование-Жизнь · Вет Сити Центр</div>
       </div>
       <div class="about-item">
         <div class="about-item-label">Подход</div>
-        <div class="about-item-value">От исследования до деплоя. Работаю с кодом, понимаю разработку</div>
+        <div class="about-item-value">Психологическое образование + системное мышление = точнее понимаю поведение пользователей</div>
+      </div>
+    </div>
+
+    <div class="contact-strip">
+      <div class="contact-text">
+        <h2>Открыта к новым проектам</h2>
+        <p>Рассматриваю полную занятость и проектную работу — удалённо или гибрид.</p>
+      </div>
+      <div class="contact-links">
+        <a href="https://t.me/Avoktaiz" target="_blank" rel="noopener" class="contact-btn primary">Написать в Telegram ↗</a>
+        <a href="mailto:qwerty75594@mail.ru" class="contact-btn secondary">qwerty75594@mail.ru</a>
       </div>
     </div>
 
@@ -273,7 +245,7 @@ footer { border-top: 1px solid var(--border); padding: 28px 0; }
 <footer>
   <div class="wrap">
     <div class="footer-inner">
-      <span class="footer-name">Anna Ziatkova</span>
+      <span class="footer-name">Анна Зятькова</span>
       <span class="footer-copy">2026</span>
     </div>
   </div>
