@@ -69,6 +69,11 @@
   margin-bottom: 6px; letter-spacing: -0.01em;
 }
 .project-info p { font-size: 14px; color: var(--ink-secondary); font-weight: 300; line-height: 1.55; max-width: 500px; }
+.project-fact {
+  font-size: 11px; font-weight: 500; letter-spacing: 0.06em;
+  color: var(--accent); margin-top: 8px; display: flex; align-items: center; gap: 6px;
+}
+.project-fact::before { content: '→'; }
 .project-right { display: flex; align-items: center; gap: 12px; }
 .project-tags { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
 .project-card:hover .tag { background: var(--card-hover); }
@@ -174,7 +179,7 @@
     <section class="section">
       <div class="section-header">
         <span class="section-title">Избранные проекты</span>
-        <span style="font-size:12px;color:var(--ink-tertiary);">4 кейса</span>
+        <span style="font-size:12px;color:var(--ink-tertiary);">3 кейса</span>
       </div>
       <div class="projects">
         <a href="mobile-bank.html" class="project-card fade-5">
@@ -182,6 +187,7 @@
           <div class="project-info">
             <h3>Металлинвестбанк — мобильный банк</h3>
             <p>Масштабирование ДБО: авторизация, платежи, «Налоги и штрафы» с нуля, навигационная архитектура поиска по услугам.</p>
+            <p class="project-fact">Продакшн · 2+ года · 5 функциональных модулей · Lead Designer</p>
           </div>
           <div class="project-right">
             <div class="project-tags"><span class="tag">Fintech</span><span class="tag">UX/UI</span><span class="tag">Mobile</span></div>
@@ -193,28 +199,19 @@
           <div class="project-info">
             <h3>Металлинвестбанк — внутренняя CRM</h3>
             <p>Редизайн корпоративной системы оформления кредитных заявок. Убедила клиента отказаться от яркого интерфейса — и вот почему это правильно.</p>
+            <p class="project-fact">Продакшн · 2 месяца · Полный цикл · Lead Designer</p>
           </div>
           <div class="project-right">
             <div class="project-tags"><span class="tag">Enterprise</span><span class="tag">B2B</span><span class="tag">Web</span></div>
             <span class="arrow-icon">↗</span>
           </div>
         </a>
-        <a href="psytools.html" class="project-card fade-7">
+        <a href="ai-portfolio.html" class="project-card fade-7">
           <span class="project-num">03</span>
           <div class="project-info">
-            <h3>PsyTools — инструменты психологической самопомощи</h3>
-            <p>Веб-сервис с АКТ-картами для самостоятельной работы и инструментарий для практикующих психологов. UX и UI с нуля.</p>
-          </div>
-          <div class="project-right">
-            <div class="project-tags"><span class="tag">UX/UI</span><span class="tag">Web</span></div>
-            <span class="arrow-icon">↗</span>
-          </div>
-        </a>
-        <a href="ai-portfolio.html" class="project-card" style="animation: fadeUp 0.45s 0.48s ease both;">
-          <span class="project-num">04</span>
-          <div class="project-info">
             <h3>AI-продукты — собственная разработка</h3>
-            <p>Два рабочих AI-приложения: анализатор UX-портфолио и трекер вакансий с чат-ассистентом. Полный цикл — от идеи до деплоя.</p>
+            <p>AI-анализатор UX-портфолио: структурированная оценка по 5 категориям. Полный цикл — от идеи до деплоя.</p>
+            <p class="project-fact">Задеплоено на Vercel · OpenAI API · Self-initiated</p>
           </div>
           <div class="project-right">
             <div class="project-tags"><span class="tag">AI Product</span><span class="tag">Fullstack</span></div>
@@ -264,3 +261,4 @@
 
 </body>
 </html>
+                                                                                                                                                                                                                           
