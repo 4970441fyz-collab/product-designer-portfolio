@@ -3,16 +3,59 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portfolio Review Board — AI-инструмент · Анна Зятькова</title>
-<meta name="description" content="Кейс: AI-инструмент для структурированной UX-критики дизайн-портфолио. Полный цикл — UX, дизайн, разработка, деплой.">
-<meta property="og:title" content="Portfolio Review Board — AI UX Critique Tool">
-<meta property="og:description" content="AI-приложение с OpenAI API, авторизацией и базой данных. Разработано с Vibe Coding.">
+<title>AI-продукты — собственная разработка · Анна Зятькова</title>
+<meta name="description" content="Два AI-приложения собственной разработки: анализатор UX-портфолио и трекер вакансий с чат-ассистентом. Полный цикл — UX, дизайн, разработка, деплой.">
+<meta property="og:title" content="AI-продукты — собственная разработка">
+<meta property="og:description" content="Дизайнер, который строит с AI — не ждёт, пока AI придёт в профессию.">
 <meta property="og:image" content="https://product-designer-portfolio-gamma.vercel.app/assets/hero.jpg">
 <link rel="stylesheet" href="css/style.css">
 <style>
+.pov-block {
+  background: var(--ink);
+  border-radius: 20px;
+  padding: 40px 48px;
+}
+.pov-block p {
+  font-size: 17px !important;
+  line-height: 1.75 !important;
+  color: rgba(255,255,255,0.8) !important;
+  font-weight: 300 !important;
+  margin-bottom: 0 !important;
+}
+.pov-block p + p { margin-top: 16px !important; }
+
+.product-block {
+  padding: 48px 0;
+  border-top: 1px solid var(--border);
+}
+.product-block:first-child { border-top: none; padding-top: 0; }
+
+.product-num {
+  font-size: 11px; font-weight: 500; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--ink-tertiary); margin-bottom: 16px;
+}
+.product-title {
+  font-family: var(--font-display); font-size: 22px; font-weight: 600;
+  letter-spacing: -0.02em; margin-bottom: 12px; color: var(--ink);
+}
+.product-desc {
+  font-size: 15px; line-height: 1.7; color: var(--ink-secondary);
+  font-weight: 300; margin-bottom: 24px; max-width: 580px;
+}
+.tech-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
+.tech-tag {
+  font-size: 11px; font-weight: 500; letter-spacing: 0.06em;
+  text-transform: uppercase; color: var(--ink-tertiary);
+  background: var(--bg); border: 1px solid var(--border);
+  padding: 5px 12px; border-radius: var(--radius-sm);
+}
 .case-note {
   font-size: 13px !important; color: var(--ink-tertiary) !important;
   font-style: italic; margin-top: 16px !important;
+}
+@media (max-width: 768px) {
+  .pov-block { padding: 28px 24px; }
+  .pov-block p { font-size: 15px !important; }
 }
 </style>
 </head>
@@ -31,8 +74,8 @@
 <div class="wrap">
 
   <div class="case-header">
-    <p class="case-label fade-1">AI Product · Case Study</p>
-    <h1 class="fade-2">Portfolio Review Board — AI-инструмент для UX-критики</h1>
+    <p class="case-label fade-1">AI Product · Self-initiated</p>
+    <h1 class="fade-2">AI-продукты — собственная разработка</h1>
     <div class="case-meta-row fade-3">
       <div class="case-meta-item">
         <span class="case-meta-label">Тип</span>
@@ -49,76 +92,96 @@
     </div>
   </div>
 
-  <div class="hero-image">
-    <img src="assets/hero.jpg" alt="Portfolio Review Board" loading="lazy">
-  </div>
-
   <div class="case-content">
 
     <div class="case-section">
-      <div class="section-label">Контекст</div>
+      <div class="section-label">Позиция</div>
       <div class="section-body">
-        <p>Junior и middle-дизайнеры часто получают несистемную, субъективную обратную связь. Фидбек зависит от ревьюера, не масштабируется и редко превращается в понятный план роста.</p>
-        <p>Я спроектировала AI-инструмент, который структурирует UX-оценку, делает её измеримой и переводит критику в систему развития.</p>
+        <div class="pov-block">
+          <p>Пока дизайн-комьюнити обсуждает, заменит ли AI профессию — я строю инструменты с AI. Figma никуда не уходит, но понимание того, как работают языковые модели, как проектировать AI-интерфейсы и как собирать продукты с Vibe Coding — это уже часть профессионального роста.</p>
+          <p>Два приложения ниже — не учебные проекты. Это рабочие инструменты, которые решают реальные задачи. И которые уже приносят мне собеседования.</p>
+        </div>
       </div>
     </div>
 
     <div class="case-section">
-      <div class="section-label">Роль</div>
-      <div class="section-body">
-        <p>Полный цикл разработки продукта: исследование проблемы, UX-архитектура, UI-дизайн, проектирование логики анализа, работа с OpenAI API, реализация интерфейса, деплой.</p>
-        <div class="role-tags">
-          <span class="role-tag">UX Research</span>
-          <span class="role-tag">Product Architecture</span>
-          <span class="role-tag">User Flow</span>
-          <span class="role-tag">UI Design</span>
-          <span class="role-tag">AI Prompt Design</span>
-          <span class="role-tag">Frontend</span>
-          <span class="role-tag">Deployment</span>
-        </div>
-        <p class="case-note">Проект реализован полностью самостоятельно.</p>
-      </div>
-    </div>
-
-    <div class="case-section">
-      <div class="section-label">Проблема</div>
-      <div class="section-body">
-        <p>UX-фидбек хаотичен, эмоционален и не даёт измеримой картины уровня дизайна. Не существует инструмента, который разбивает оценку на категории, формирует score и показывает зону роста.</p>
-      </div>
-    </div>
-
-    <div class="case-section">
-      <div class="section-label">Решение</div>
+      <div class="section-label">Продукты</div>
       <div class="section-body">
 
-        <div class="split-row">
-          <div class="split-text">
-            <h3>Upload Experience</h3>
-            <p>Минималистичный drag & drop экран. Максимальный фокус на действии без лишнего интерфейсного шума.</p>
+        <div class="product-block">
+          <div class="product-num">Продукт 01</div>
+          <div class="product-title">Portfolio Review Board — AI-анализатор UX-портфолио</div>
+          <div class="product-desc">Junior и middle-дизайнеры часто получают несистемную, субъективную обратную связь. Я спроектировала инструмент, который структурирует оценку по пяти категориям, делает её измеримой и переводит критику в конкретные рекомендации.</div>
+          <div class="tech-row">
+            <span class="tech-tag">OpenAI API</span>
+            <span class="tech-tag">Figma</span>
+            <span class="tech-tag">Vercel</span>
+            <span class="tech-tag">AI Prompt Design</span>
+            <span class="tech-tag">Vibe Coding</span>
           </div>
-          <div class="split-img">
-            <img src="assets/upload.jpg" alt="Upload Screen" loading="lazy">
+
+          <div class="split-row" style="margin-top:0;">
+            <div class="split-text">
+              <h3>Upload Experience</h3>
+              <p>Минималистичный drag & drop экран. Максимальный фокус на действии без лишнего интерфейсного шума.</p>
+            </div>
+            <div class="split-img">
+              <img src="assets/upload.jpg" alt="Upload Screen" loading="lazy">
+            </div>
+          </div>
+
+          <div class="split-row reverse">
+            <div class="split-text">
+              <h3>AI Structured Analysis</h3>
+              <p>AI разбивает оценку на категории: Visual Hierarchy, Usability, Consistency, Accessibility, Clarity. Каждая включает статус, комментарий и рекомендацию.</p>
+            </div>
+            <div class="split-img">
+              <img src="assets/analysis.jpg" alt="AI Analysis" loading="lazy">
+            </div>
+          </div>
+
+          <div class="split-row">
+            <div class="split-text">
+              <h3>Result Dashboard</h3>
+              <p>Структурированный отчёт: общий score из 100, карточки категорий, цветовая система статусов, growth summary.</p>
+            </div>
+            <div class="split-img">
+              <img src="assets/dashboard.jpg" alt="Result Dashboard" loading="lazy">
+            </div>
+          </div>
+
+          <div style="margin-top:32px;">
+            <a href="https://portfolio-review-sand.vercel.app/" target="_blank" rel="noopener" class="cta-btn">Открыть продукт ↗</a>
           </div>
         </div>
 
-        <div class="split-row reverse">
-          <div class="split-text">
-            <h3>AI Structured Analysis</h3>
-            <p>AI разбивает оценку на категории: Visual Hierarchy, Usability, Consistency, Accessibility, Clarity. Каждая категория включает статус, комментарий и конкретную рекомендацию.</p>
+        <div class="product-block">
+          <div class="product-num">Продукт 02</div>
+          <div class="product-title">Job Application Tracker — трекер вакансий с AI-ассистентом</div>
+          <div class="product-desc">Поиск работы — это задача с данными. Вставляешь ссылку на вакансию — AI сам заходит на сайт, вытаскивает описание, собирает информацию о компании и сохраняет в трекер. Дальше можно спрашивать в чате: «кто мне не ответил?», «напиши cover letter», «сравни эти две вакансии».</div>
+          <div class="tech-row">
+            <span class="tech-tag">OpenAI API</span>
+            <span class="tech-tag">Web Scraping</span>
+            <span class="tech-tag">Chat UI</span>
+            <span class="tech-tag">Vercel</span>
+            <span class="tech-tag">Vibe Coding</span>
           </div>
-          <div class="split-img">
-            <img src="assets/analysis.jpg" alt="AI Analysis" loading="lazy">
-          </div>
-        </div>
 
-        <div class="split-row">
-          <div class="split-text">
-            <h3>Result Interface</h3>
-            <p>Вместо длинного текста — структурированный продуктовый отчёт: общий score из 100, карточки категорий, цветовая система статусов и growth summary.</p>
+          <div class="img-grid single">
+            <img src="assets/0001.jpg" alt="Job Application Tracker" loading="lazy">
           </div>
-          <div class="split-img">
-            <img src="assets/dashboard.jpg" alt="Result Dashboard" loading="lazy">
+
+          <ul class="result-list light" style="margin-top:24px;">
+            <li>Вставляешь ссылку — AI автоматически извлекает описание вакансии и профиль компании</li>
+            <li>Все вакансии в одном трекере: статус ответа, дата, компания, роль</li>
+            <li>Чат-ассистент отвечает на вопросы по пайплайну и помогает с cover letter</li>
+            <li>Сравнение двух вакансий по параметрам в одном запросе</li>
+          </ul>
+
+          <div style="margin-top:32px;">
+            <a href="https://vibecoding-dusky.vercel.app" target="_blank" rel="noopener" class="cta-btn">Открыть продукт ↗</a>
           </div>
+          <p class="case-note">Проект курса по Vibe Coding. Реализован полностью самостоятельно.</p>
         </div>
 
       </div>
@@ -128,29 +191,11 @@
       <div class="section-label">UX-подход</div>
       <div class="section-body">
         <ul class="result-list light">
-          <li>Тёмная тема как инструмент фокуса — снижает визуальный шум при анализе</li>
-          <li>Карточная система для снижения когнитивной нагрузки</li>
-          <li>Score как визуальный якорь измеримости результата</li>
-          <li>Логика: Motivation → Action → Analysis → Reflection → Repeat</li>
+          <li>Тёмная тема как инструмент фокуса — снижает визуальный шум при аналитических задачах</li>
+          <li>Score и карточки категорий как способ сделать субъективную оценку измеримой</li>
+          <li>Минимальный onboarding — продукты работают без обучения, с первого действия</li>
+          <li>AI как слой поверх интерфейса, не замена ему — пользователь контролирует процесс</li>
         </ul>
-      </div>
-    </div>
-
-    <div class="case-section">
-      <div class="section-label">Результат</div>
-      <div class="section-body">
-        <div class="result-card">
-          <div class="result-kicker">Итог проекта</div>
-          <ul class="result-list">
-            <li>Создан работающий MVP с реальным AI-анализом</li>
-            <li>Сформирован UX-фреймворк для структурированной оценки дизайна</li>
-            <li>Разработана масштабируемая структура SaaS-интерфейса</li>
-            <li>Продукт задеплоен и доступен онлайн</li>
-          </ul>
-        </div>
-        <a href="https://portfolio-review-sand.vercel.app/" target="_blank" rel="noopener" class="cta-btn">
-          Открыть продукт ↗
-        </a>
       </div>
     </div>
 

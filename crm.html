@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CRM Металлинвестбанк — редизайн · Анна Зятькова</title>
+<meta name="description" content="Кейс: редизайн внутренней CRM-системы Металлинвестбанка для оформления кредитных заявок сотрудниками.">
+<meta property="og:title" content="CRM Металлинвестбанк — редизайн внутренней системы">
+<meta property="og:description" content="Enterprise UX: редизайн сложного банковского внутреннего инструмента. Убедила клиента отказаться от яркого интерфейса.">
+<meta property="og:image" content="https://product-designer-portfolio-gamma.vercel.app/assets/crm-tasks.jpg">
+<link rel="stylesheet" href="css/style.css">
+<style>
+/* ── BEFORE / AFTER ── */
+.before-after {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin: 28px 0;
+}
+.ba-item {}
+.ba-label {
+  font-size: 11px; font-weight: 500; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--ink-tertiary);
+  margin-bottom: 10px; display: flex; align-items: center; gap: 8px;
+}
+.ba-label .ba-dot {
+  width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0;
+}
+.ba-dot.before { background: var(--ink-tertiary); }
+.ba-dot.after  { background: #3B6FE0; }
+.ba-item img {
+  width: 100%; height: auto; border-radius: 12px;
+  border: 1px solid var(--border); display: block;
+}
+
+/* ── INSIGHT BLOCK ── */
+.insight-block {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--ink);
+  border-radius: 0 12px 12px 0;
+  padding: 20px 24px;
+  margin: 24px 0;
+}
+.insight-block p {
+  font-size: 15px !important;
+  line-height: 1.7 !important;
+  color: var(--ink-secondary) !important;
+  font-weight: 300 !important;
+  margin-bottom: 0 !important;
+}
+.insight-label {
+  font-size: 10px; font-weight: 600; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--ink-tertiary);
+  margin-bottom: 8px;
+}
+
+/* ── SCREENS GRID ── */
+.screens-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 24px 0;
+}
+.screens-2 img {
+  width: 100%; height: auto; border-radius: 12px;
+  border: 1px solid var(--border); display: block;
+}
+
+/* ── PROCESS STEP ── */
+.process-steps { margin: 24px 0; }
+.process-step {
+  display: flex; gap: 20px; padding: 18px 0;
+  border-bottom: 1px solid var(--border);
+}
+.process-step:last-child { border-bottom: none; }
+.step-num {
+  font-size: 11px; font-weight: 500; letter-spacing: 0.06em;
+  color: var(--ink-tertiary); min-width: 28px; padding-top: 2px;
+}
+.step-body h4 {
+  font-family: var(--font-display); font-size: 15px; font-weight: 600;
+  margin-bottom: 6px; letter-spacing: -0.01em;
+}
+.step-body p {
+  font-size: 14px !important; line-height: 1.65 !important;
+  color: var(--ink-secondary) !important; font-weight: 300 !important;
+}
+
+@media (max-width: 860px) {
+  .before-after { grid-template-columns: 1fr; }
+  .screens-2 { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <nav class="nav">
+      <a href="index.html" class="back-link">← Назад</a>
+      <a href="index.html" class="nav-brand">Анна Зятькова</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="wrap">
+
+  <div class="case-header">
+    <p class="case-label fade-1">Enterprise · Web · Case Study</p>
+    <h1 class="fade-2">Редизайн CRM-системы для банковских сотрудников</h1>
+    <div class="case-meta-row fade-3">
+      <div class="case-meta-item">
+        <span class="case-meta-label">Компания</span>
+        <span class="case-meta-value">Металлинвестбанк</span>
+      </div>
+      <div class="case-meta-item">
+        <span class="case-meta-label">Тип</span>
+        <span class="case-meta-value">Редизайн внутреннего инструмента</span>
+      </div>
+      <div class="case-meta-item">
+        <span class="case-meta-label">Роль</span>
+        <span class="case-meta-value">Lead Product Designer</span>
+      </div>
+      <div class="case-meta-item">
+        <span class="case-meta-label">Домен</span>
+        <span class="case-meta-value">Enterprise Web · Design System</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="case-content">
+
+    <div class="case-section">
+      <div class="section-label">Контекст</div>
+      <div class="section-body">
+        <p>Внутренняя CRM-система банка использовалась сотрудниками офисов для оформления кредитных заявок по входящим клиентам. Система была основана на сторонней платформе: перегруженный интерфейс, устаревшая типографика, отсутствие визуальной иерархии.</p>
+        <p>Задача банка — создать собственный инструмент на базе существующего, адаптированный под внутренние процессы и фирменный стиль.</p>
+      </div>
+    </div>
+
+    <div class="case-section">
+      <div class="section-label">Вызов</div>
+      <div class="section-body">
+        <p>На старте клиент сформулировал запрос: «сделайте ярко, используя наш фирменный цвет». Для потребительских продуктов это работает — но не для внутреннего рабочего инструмента.</p>
+
+        <div class="insight-block">
+          <div class="insight-label">Моя позиция</div>
+          <p>Я объяснила: сотрудник работает в CRM весь день. Формы с десятками полей, таблицы с заявками, сложные статусы — при ярком насыщенном интерфейсе это создаёт высокую когнитивную нагрузку и визуальный шум. Инструмент должен помогать думать, а не отвлекать.</p>
+        </div>
+
+        <p>Предложила альтернативу: сдержанный, функциональный дизайн с аккуратной адаптацией под фирменный стиль банка и продуманной цветовой системой для статусов. Клиент согласился — и мы приступили к работе.</p>
+      </div>
+    </div>
+
+    <div class="case-section">
+      <div class="section-label">До редизайна</div>
+      <div class="section-body">
+        <p>Исходная система — типичный enterprise-legacy: зелёный хедер сторонней платформы, поля набиты вплотную, нет чёткой визуальной иерархии. Пользователь вынужден самостоятельно ориентироваться в плотном потоке информации.</p>
+        <div class="before-after">
+          <div class="ba-item">
+            <div class="ba-label"><span class="ba-dot before"></span>До — исходная система</div>
+            <img src="assets/crm-before.jpg" alt="CRM до редизайна" loading="lazy">
+          </div>
+          <div class="ba-item">
+            <div class="ba-label"><span class="ba-dot after"></span>После — новый дизайн</div>
+            <img src="assets/crm-tasks.jpg" alt="CRM после редизайна — список задач" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="case-section">
+      <div class="section-label">Роль</div>
+      <div class="section-body">
+        <p>Два месяца плотной итерационной работы с менеджером со стороны банка. Процесс: они предоставляли скрины текущего интерфейса с комментариями что хотят улучшить — я пересобирала в новом дизайне, согласовывала, двигались дальше.</p>
+        <div class="role-tags">
+          <span class="role-tag">UX Architecture</span>
+          <span class="role-tag">UI Design</span>
+          <span class="role-tag">Design System</span>
+          <span class="role-tag">Client Negotiation</span>
+          <span class="role-tag">Complex Forms</span>
+          <span class="role-tag">Dev Handoff</span>
+        </div>
+
+        <div class="process-steps">
+          <div class="process-step">
+            <span class="step-num">01</span>
+            <div class="step-body">
+              <h4>Аудит и переговоры</h4>
+              <p>Изучила существующую систему, определила проблемные паттерны. Обосновала клиенту альтернативный визуальный подход — сдержанный интерфейс вместо яркого.</p>
+            </div>
+          </div>
+          <div class="process-step">
+            <span class="step-num">02</span>
+            <div class="step-body">
+              <h4>Компонентная база</h4>
+              <p>Собрала UI Kit: цветовая система, типографика, инпуты, кнопки, бейджи статусов. Основа для согласованного масштабирования по всему продукту.</p>
+            </div>
+          </div>
+          <div class="process-step">
+            <span class="step-num">03</span>
+            <div class="step-body">
+              <h4>Итерационное проектирование</h4>
+              <p>Экран за экраном: список задач → поиск клиента → заполнение анкеты → система статусов заявки. Каждый экран согласовывался до перехода к следующему.</p>
+            </div>
+          </div>
+          <div class="process-step">
+            <span class="step-num">04</span>
+            <div class="step-body">
+              <h4>Хендофф</h4>
+              <p>Финальные макеты с описанием состояний, спецификациями компонентов и логикой переходов переданы в разработку.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="case-section">
+      <div class="section-label">Ключевые экраны</div>
+      <div class="section-body">
+
+        <div style="margin-bottom: 48px;">
+          <h3 style="font-family:var(--font-display);font-size:17px;font-weight:600;margin-bottom:8px;letter-spacing:-0.01em;">Список задач и фильтрация</h3>
+          <p>Главный рабочий экран сотрудника. Фильтры по подразделению, продукту, статусу, клиенту и дате. Сортируемая таблица с ключевыми атрибутами заявки. Модальное окно назначения исполнителя.</p>
+          <div class="screens-2" style="margin-top:20px;">
+            <img src="assets/crm-tasks.jpg" alt="Список задач" loading="lazy">
+            <img src="assets/crm-tasks-modal.jpg" alt="Назначение исполнителя" loading="lazy">
+          </div>
+        </div>
+
+        <div style="margin-bottom: 48px;">
+          <h3 style="font-family:var(--font-display);font-size:17px;font-weight:600;margin-bottom:8px;letter-spacing:-0.01em;">Заполнение анкеты — многошаговая форма</h3>
+          <p>Один из самых сложных экранов: форма кредитной заявки с 5 шагами (персональная информация, занятость и доходы, дополнительные данные, параметры кредита, документы). Прогресс-навигация, условные поля, автозаполнение. Приоритет — читаемость при высокой плотности данных.</p>
+          <img src="assets/crm-form.jpg" alt="Форма анкеты — персональная информация" loading="lazy" style="border-radius:12px;border:1px solid var(--border);width:100%;margin-top:20px;">
+        </div>
+
+        <div>
+          <h3 style="font-family:var(--font-display);font-size:17px;font-weight:600;margin-bottom:8px;letter-spacing:-0.01em;">Система статусов кредитной заявки</h3>
+          <p>Каждая заявка проходит цикл из 12 этапов: от подписания анкеты до подтверждения сделки. Три состояния — done, in progress, not started — с цветовой кодировкой, понятной без текстовых подсказок. Статусы видны в таблице и внутри карточки заявки.</p>
+          <img src="assets/crm-status.jpg" alt="Система статусов заявки" loading="lazy" style="border-radius:12px;border:1px solid var(--border);width:100%;margin-top:20px;">
+        </div>
+
+      </div>
+    </div>
+
+    <div class="case-section">
+      <div class="section-label">Результат</div>
+      <div class="section-body">
+        <div class="result-card">
+          <div class="result-kicker">Итог проекта</div>
+          <ul class="result-list">
+            <li>Спроектирован полный редизайн внутренней CRM с нуля — от концепции до хендоффа</li>
+            <li>Убедила клиента отказаться от визуально перегруженного решения — продукт стал удобнее для ежедневной работы</li>
+            <li>Выстроена компонентная система: единые паттерны форм, таблиц и статусов</li>
+            <li>Спроектирована сложная многошаговая форма кредитной анкеты с условной логикой полей</li>
+            <li>Разработана масштабируемая система статусов для полного цикла кредитной заявки</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <a href="index.html" class="back-btn">← Все проекты</a>
+
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-inner">
+      <span class="footer-name">Анна Зятькова</span>
+      <span class="footer-copy">2026</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
